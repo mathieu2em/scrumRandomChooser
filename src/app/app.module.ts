@@ -23,6 +23,7 @@ import { DetailModule } from './detail/detail.module';
 import { DevListComponent } from './devList/devList.component'
 
 import { AppComponent } from './app.component';
+import { RandomChooserComponent } from './random-chooser/random-chooser.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -30,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, DevListComponent],
+  declarations: [AppComponent, DevListComponent, RandomChooserComponent],
   imports: [
     BrowserAnimationsModule,
     MatGridListModule,
