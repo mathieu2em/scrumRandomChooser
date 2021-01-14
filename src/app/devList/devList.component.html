@@ -8,32 +8,33 @@
 
   <div class="list">
       <h3>Present on the meeting</h3>
-      <mat-selection-list cdkDropList 
+      <mat-list cdkDropList 
         [cdkDropListData]="todo" 
         [cdkDropListConnectedTo]="secondList" 
         #firstList="cdkDropList"
         (cdkDropListDropped)="drop($event, 'todo')">
-          <mat-list-option role="listitem" *ngFor="let task of todo; let i = index" cdkDrag>
+          <mat-list-item role="listitem" *ngFor="let task of todo; let i = index" cdkDrag>
             {{ task.title }}
             <mat-divider></mat-divider>
-          </mat-list-option>
-      </mat-selection-list>
+          </mat-list-item>
+          
+      </mat-list>
 
       <p *ngIf="todo.length < 1">No team member present on the meeting. Add at least one team member!</p>
       <p *ngIf="todo.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
 
       <h3>Not available</h3>
-      <mat-selection-list cdkDropList 
+      <mat-list cdkDropList 
         [cdkDropListData]="done" 
         [cdkDropListConnectedTo]="firstList" 
         #secondList="cdkDropList"
         (cdkDropListDropped)="drop($event, 'done')">
-          <mat-list-option role="listitem" *ngFor="let task of done; let i = index" cdkDrag>
+          <mat-list-item role="listitem" *ngFor="let task of done; let i = index" cdkDrag>
             <mat-icon matListIcon (click)="deleteTask(i)">delete_forever</mat-icon>
             <s style="color: grey;">{{ task.title }}</s>              
             <mat-divider></mat-divider>
-          </mat-list-option>
-      </mat-selection-list>   
+          </mat-list-item>
+      </mat-list>   
 
       <p *ngIf="done.length < 1"> All your team members are present on the meeting. Nice !</p>
 
