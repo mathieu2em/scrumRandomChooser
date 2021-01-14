@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-random-chooser',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RandomChooserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  private onGoToDevListPage(): void {
+    this.router.navigate(['devList']);
+  }
+
+  
 
 }
