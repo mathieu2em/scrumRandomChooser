@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-const notifier = require("node-notifier");
 
 @Component({
   selector: 'app-timer',
