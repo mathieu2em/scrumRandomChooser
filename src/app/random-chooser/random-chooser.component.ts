@@ -17,6 +17,6 @@ export class RandomChooserComponent implements OnInit {
     this.router.navigate(['devList']);
   }
 
-  
+
 
 }
