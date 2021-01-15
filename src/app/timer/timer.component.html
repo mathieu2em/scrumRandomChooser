@@ -1,17 +1,17 @@
-<div class="wrapper">
-    <div class="time">
-      <span id="minutes">{{minutes}}</span>
-      :
-      <span id="seconds">{{seconds}}</span>
-    </div>
-    <div class="controls">
-        <button id="reset" (click)="onReset()">Reset</button>
-        <button id="action" (click)="onAction()">{{action}}</button><hr>
-        Timer : <br>
-        <label>
-          Minutes
-          <input id="minutesAlarm" type="number" value="0" min="0" />
-        </label>
-        <button (click)="onChangeAlarm()" >Set</button>
-    </div>
-  </div>
+
+
+<mat-card>{{ displayTime }}</mat-card>
+<mat-card>
+    <button mat-button (click)="reset()">Reset</button>
+    <button mat-button  (click)="startOrStop()">{{ action }}</button><hr>
+
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Timer</mat-label>
+          <input type="time" matInput>
+        </mat-form-field>
+    </form>
+    <button mat-button color="primary" (click)="alarmSet()" >Set</button>
+    
+</mat-card>
+

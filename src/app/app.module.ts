@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -41,6 +42,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatIconModule,
     MatListModule,
     MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
     DragDropModule,
     BrowserModule,
     FormsModule,
