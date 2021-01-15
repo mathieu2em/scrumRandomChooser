@@ -8,7 +8,7 @@
 
   <div class="list">
       <h3>Present on the meeting</h3>
-      <mat-selection-list cdkDropList 
+      <mat-selection-list [multiple]="false" cdkDropList 
         [cdkDropListData]="todo" 
         [cdkDropListConnectedTo]="secondList" 
         #firstList="cdkDropList"
@@ -23,7 +23,7 @@
       <p *ngIf="todo.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
 
       <h3>Not available</h3>
-      <mat-selection-list cdkDropList 
+      <mat-selection-list [multiple]="false" cdkDropList 
         [cdkDropListData]="done" 
         [cdkDropListConnectedTo]="firstList" 
         #secondList="cdkDropList"
