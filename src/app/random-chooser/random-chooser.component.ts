@@ -13,7 +13,7 @@ export class RandomChooserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private onGoToDevListPage(): void {
+  public onGoToDevListPage(): void {
     this.router.navigate(['devList']);
   }
 

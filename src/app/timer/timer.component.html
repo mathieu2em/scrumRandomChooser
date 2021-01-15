@@ -1,1 +1,17 @@
-<p>timer works!</p>
+<div class="wrapper">
+    <div class="time">
+      <span id="minutes">{{minutes}}</span>
+      :
+      <span id="seconds">{{seconds}}</span>
+    </div>
+    <div class="controls">
+        <button id="reset" (click)="onReset()">Reset</button>
+        <button id="action" (click)="onAction()">{{action}}</button><hr>
+        Timer : <br>
+        <label>
+          Minutes
+          <input id="minutesAlarm" type="number" value="0" min="0" />
+        </label>
+        <button (click)="onChangeAlarm()" >Set</button>
+    </div>
+  </div>

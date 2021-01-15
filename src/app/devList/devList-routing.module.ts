@@ -5,7 +5,7 @@ import { DevListComponent } from './devList.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'devList',
     component: DevListComponent
   }
 ];
