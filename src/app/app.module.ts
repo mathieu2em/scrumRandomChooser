@@ -27,6 +27,7 @@ import { DevListComponent } from './devList/devList.component'
 import { AppComponent } from './app.component';
 import { RandomChooserComponent } from './random-chooser/random-chooser.component';
 import { TimerComponent } from './timer/timer.component';
+import { EditTeamComponent } from './edit-team/edit-team.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -34,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, DevListComponent, RandomChooserComponent, TimerComponent],
+  declarations: [AppComponent, DevListComponent, RandomChooserComponent, TimerComponent, EditTeamComponent],
   imports: [
     BrowserAnimationsModule,
     MatGridListModule,

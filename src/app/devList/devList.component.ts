@@ -57,10 +57,13 @@ onAreaListControlChanged(index: number) {
     }, 1000);
   }
 
+  public onGoToEditYourTeamPage(): void {
+    this.router.navigate(['editTeam']);
+  }
+
   public onGoToRandomChooserPage(): void {
     this.router.navigate(['']);
   }
-
 
 drop(event: CdkDragDrop<string[]>, type: string) {
     if (event.previousContainer !== event.container) {
