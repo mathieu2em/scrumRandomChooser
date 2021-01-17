@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -29,7 +30,8 @@ public done: Todo[] = [
 
 arr = [];
 
-constructor() {}
+
+constructor(private router:Router) {}
 
 ngOnInit() {}
 
@@ -54,6 +56,11 @@ onAreaListControlChanged(index: number) {
       this.done.unshift(task[0]);
     }, 1000);
   }
+
+  public onGoToRandomChooserPage(): void {
+    this.router.navigate(['']);
+  }
+
 
 drop(event: CdkDragDrop<string[]>, type: string) {
     if (event.previousContainer !== event.container) {
