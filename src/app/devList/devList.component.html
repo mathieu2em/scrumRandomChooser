@@ -29,7 +29,6 @@
         #secondList="cdkDropList"
         (cdkDropListDropped)="drop($event, 'done')">
           <mat-list-option role="listitem" *ngFor="let task of done; let i = index" cdkDrag>
-            <mat-icon matListIcon (click)="deleteTask(i)">delete_forever</mat-icon>
             <s style="color: grey;">{{ task.title }}</s>              
             <mat-divider></mat-divider>
           </mat-list-option>
