@@ -18,6 +18,8 @@
     styleUrls: ['./devList.component.scss']
   })
   export class DevListComponent implements OnInit {
+    value = "";
+
 
   public todo: Todo[] = [
       {
