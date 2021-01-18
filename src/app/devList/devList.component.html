@@ -4,38 +4,77 @@
   <br/>
   <p> Drag and drop team members in the Participant or Not available colunm.</p>
   <br/>
+
+
+
+  <p *ngIf="todo.length < 1">No team member present on the meeting. Add at least one team member!</p>
+  <p *ngIf="todo.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
+  <p *ngIf="done.length < 1"> All your team members are present on the meeting. Nice !</p>
+
+
+
+
+  <div class="example-container">
+    <h2>Present on the meeting</h2>
+  
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>
+
+        <mat-card class="example-card">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ item.firstname + " " + item.lastname }}</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+  
+  <div class="example-container">
+    <h2>Not available</h2>
+  
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>
+
+              
+        <mat-card class="example-card">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ item.firstname + " " + item.lastname }}</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+  
   
 
-  <div class="list">
-      <h3>Present on the meeting</h3>
-      <mat-selection-list [multiple]="false" cdkDropList 
-        [cdkDropListData]="todo" 
-        [cdkDropListConnectedTo]="secondList" 
-        #firstList="cdkDropList"
-        (cdkDropListDropped)="drop($event, 'todo')">
-          <mat-list-option role="listitem" *ngFor="let task of todo; let i = index" cdkDrag>
-            {{ task.title }}
-            <mat-divider></mat-divider>
-          </mat-list-option>
-      </mat-selection-list>
 
-      <p *ngIf="todo.length < 1">No team member present on the meeting. Add at least one team member!</p>
-      <p *ngIf="todo.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
 
-      <h3>Not available</h3>
-      <mat-selection-list [multiple]="false" cdkDropList 
-        [cdkDropListData]="done" 
-        [cdkDropListConnectedTo]="firstList" 
-        #secondList="cdkDropList"
-        (cdkDropListDropped)="drop($event, 'done')">
-          <mat-list-option role="listitem" *ngFor="let task of done; let i = index" cdkDrag>
-            <s style="color: grey;">{{ task.title }}</s>              
-            <mat-divider></mat-divider>
-          </mat-list-option>
-      </mat-selection-list>   
 
-      <p *ngIf="done.length < 1"> All your team members are present on the meeting. Nice !</p>
 
+
+
+  
+      <!--
       <h3>Add a new team member to the meeting</h3>
 
       <form class="example-form">
@@ -50,6 +89,7 @@
         </mat-form-field>
     </form>
   </div>  
+  -->
 
   <button mat-button color="primary"  (click)="onGoToRandomChooserPage()">Return to Random Chooser</button>
   <button mat-button color="primary"  (click)="onGoToEditYourTeamPage()">Edit your team</button>
