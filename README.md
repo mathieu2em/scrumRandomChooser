@@ -2,6 +2,16 @@
 
 The main goal of the *Scrum Random Chooser* app is to automatically and randomly select the next person who will speak during the scrum. It will also be packaged with an integrated timer to keep track of how long each team member will speak (optional)
 
+# How to start github project
+## first use
+``` shell
+npm install && npm run electron:serve
+```
+## then 
+``` bash
+npm run electron:serve
+```
+
 # TODO
 
 ## Devlist page
