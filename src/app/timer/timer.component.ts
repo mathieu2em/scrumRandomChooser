@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-timer',
@@ -13,7 +14,11 @@ export class TimerComponent implements OnInit {
   private alarm;
   private interval;
 
-  constructor() { }
+  public timerForm = this.formBuilder.group({
+    time: ''
+  });
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -40,8 +45,10 @@ export class TimerComponent implements OnInit {
     return new Date(time * 1000).toISOString().substr(11, 8).slice(3);
   }
 
-  public alarmSet(): void {
-    
+  // Get time from form input, then use it to set when the user should be alarmed of time ending.
+  public onSubmitAlarmSet(): void {
+    let time: {time:string} = this.timerForm.value;
+    this.alarm = time.time;
   }
 
   // Start an interval.
@@ -50,6 +57,11 @@ export class TimerComponent implements OnInit {
     this.interval = setInterval(() => {
       this.time++;
       this.displayTime = this.formatSecondsToDisplayTime(this.time);
+      // Verifies if the time corresponds to the alarm set by the user.
+      if(this.displayTime == this.alarm) {
+        this.stopTimer();
+        window.alert("TIME IS UP !!!");
+      }
     },1000)
   }
 

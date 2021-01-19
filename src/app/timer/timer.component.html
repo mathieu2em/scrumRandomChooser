@@ -5,13 +5,15 @@
     <button mat-button (click)="reset()">Reset</button>
     <button mat-button  (click)="startOrStop()">{{ action }}</button><hr>
 
-    <form class="example-form">
+    <form [formGroup]="timerForm" (ngSubmit)="onSubmitAlarmSet()">
         <mat-form-field class="example-full-width">
           <mat-label>Timer</mat-label>
-          <input type="time" matInput>
+          <input type="text" name="duration" id="durationForm" maxlength=8 pattern="[\d]{2}:[\d]{2}"
+          title="The amount of seconds, optionally preceded by minutes"
+          placeholder="mm:ss" formControlName="time" size=30 matInput>
+          <button mat-button color="primary" type="submit">Set</button>
         </mat-form-field>
     </form>
-    <button mat-button color="primary" (click)="alarmSet()" >Set</button>
     
 </mat-card>
 
