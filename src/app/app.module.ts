@@ -28,6 +28,8 @@ import { AppComponent } from './app.component';
 import { RandomChooserComponent } from './random-chooser/random-chooser.component';
 import { TimerComponent } from './timer/timer.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -49,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DragDropModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
