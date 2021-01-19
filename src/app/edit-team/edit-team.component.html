@@ -1,7 +1,12 @@
 <div class="container">
     <h1>Your team members </h1>
    
-  
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+      </div>
+      
+
+
   
     <div class="list">
         <h3>Present on the meeting</h3>
@@ -11,7 +16,7 @@
           #firstList="cdkDropList"
           (cdkDropListDropped)="drop($event, 'todo')">
             <mat-list-option role="listitem" *ngFor="let task of todo; let i = index" cdkDrag>
-              {{ task.title }}
+              {{ task.firstname }}
               <mat-divider></mat-divider>
             </mat-list-option>
         </mat-selection-list>
@@ -22,15 +27,29 @@
         <h3>Add a new team member to the meeting</h3>
   
         <form class="example-form">
+
           <mat-form-field class="example-form-field">
-              <input matInput type="text" placeholder="Add a new team member here"              
-                [(ngModel)]="value" 
+              <input matInput type="text" placeholder="First name"              
+                [(ngModel)]="firstname" 
                 [ngModelOptions]="{standalone: true}" 
-                (keyup.enter)="onSubmit()">
-              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput($event)">
-                <mat-icon>close</mat-icon>
-              </button>
-          </mat-form-field>
+                (keyup.enter)="onAddingNewTeamMember()">
+        </mat-form-field> <br/>
+        <mat-form-field class="example-form-field">
+
+                <input matInput type="text" placeholder="Last name"              
+                [(ngModel)]="lastname" 
+                [ngModelOptions]="{standalone: true}" 
+                (keyup.enter)="onAddingNewTeamMember()">
+        </mat-form-field> <br>
+
+        <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".csv"/>
+        <button mat-flat-button color="primary" (click)="csvInput.click()">Upload a picture</button> <br/>
+        
+
+        <button mat-button matSuffix mat-icon-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
+
+        
       </form>
     </div>  
   
