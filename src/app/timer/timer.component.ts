@@ -28,6 +28,7 @@ export class TimerComponent implements OnInit {
   public reset(): void {
     this.time = 0
     this.displayTime = this.formatSecondsToDisplayTime(this.time);
+    this.stopTimer();
   }
   
   // Depending on if time is running or not, start or stop it.
