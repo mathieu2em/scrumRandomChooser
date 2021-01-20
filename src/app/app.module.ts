@@ -30,6 +30,8 @@ import { TimerComponent } from './timer/timer.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { TeamMembersManagerService } from './team-members-manager.service';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -65,7 +67,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     })
   ],
-  providers: [],
+  providers: [TeamMembersManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

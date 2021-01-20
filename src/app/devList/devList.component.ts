@@ -62,8 +62,7 @@
       this.todo.push({ title: this.value, date: new Date().toString() });
       this.value = '';
     }
-
-    */
+  */
 
   clearInput(event: MouseEvent) {
       if ((<HTMLElement>event.target).nodeName === 'MAT-ICON') {

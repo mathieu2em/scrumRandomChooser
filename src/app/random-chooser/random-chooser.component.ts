@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TeamMembersManagerService } from '../team-members-manager.service';
+import { TeamMember } from '../TeamMember';
 
 @Component({
   selector: 'app-random-chooser',
@@ -8,7 +10,13 @@ import { Router } from '@angular/router';
 })
 export class RandomChooserComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  teamMembers: TeamMember[];
+
+  constructor(
+    private router: Router,
+    private readonly _tmService: TeamMembersManagerService) { 
+      this.teamMembers = _tmService.getTeamMembers();
+    }
 
   ngOnInit(): void {
   }
@@ -16,7 +24,5 @@ export class RandomChooserComponent implements OnInit {
   public onGoToDevListPage(): void {
     this.router.navigate(['devList']);
   }
-
-
 
 }
