@@ -5,13 +5,8 @@
     moveItemInArray,
     transferArrayItem
   } from '@angular/cdk/drag-drop';
+  import { TeamMember } from '../TeamMember';
 
-
-  export interface Todo {
-    firstname: string;
-    lastname: string;
-    picture: string;
-  }
   @Component({
     selector: 'app-devList',
     templateUrl: './devList.component.html',
@@ -21,7 +16,7 @@
     value = "";
 
 
-  public todo: Todo[] = [
+  public todo: TeamMember[] = [
       {
         "firstname": "Alexandre",
         "lastname": "Chartrand",
@@ -39,7 +34,7 @@
       }
     ];
 
-  public done: Todo[] = [
+  public done: TeamMember[] = [
     {
       "firstname": "Bob",
       "lastname": "Terrier",

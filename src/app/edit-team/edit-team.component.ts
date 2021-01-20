@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-export interface Todo {
-  firstname: string;
-  lastname: string;
-  picture: string;
-}
+import { TeamMember } from '../TeamMember';
 
 @Component({
   selector: 'app-edit-team',
@@ -16,7 +11,7 @@ export class EditTeamComponent implements OnInit {
   firstname = '';
   lastname = '';
 
-  public todo: Todo[] = [
+  public todo: TeamMember[] = [
     {
       "firstname": "Alexandre",
       "lastname": "Chartrand",
@@ -34,7 +29,7 @@ export class EditTeamComponent implements OnInit {
     }
   ];
 
-public done: Todo[] = [
+public done: TeamMember[] = [
   {
     "firstname": "Bob",
     "lastname": "Terrier",
