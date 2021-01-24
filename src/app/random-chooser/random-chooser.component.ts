@@ -10,15 +10,27 @@ import { TeamMember } from '../TeamMember';
 })
 export class RandomChooserComponent implements OnInit {
 
-  teamMembers: TeamMember[];
+  public actualTeamMember: TeamMember = { firstName:'still no', lastName: 'dev chosen', picture:''};
+  public currentImage: string = null;
+  public showTimer: false;
+  private teamMembers: TeamMember[];
+  
 
   constructor(
     private router: Router,
-    private readonly _tmService: TeamMembersManagerService) { 
-      this.teamMembers = _tmService.getTeamMembers();
-    }
+    private readonly _tmService: TeamMembersManagerService)
+  { 
+    this.teamMembers = this._tmService.getTeamMembers();
+  }
+
 
   ngOnInit(): void {
+  }
+
+  public onChooseDev() {
+    let i = Math.floor(Math.random()*this.teamMembers.length);
+    this.actualTeamMember = this.teamMembers[i];
+    this.teamMembers.splice(i,1);
   }
 
   public onGoToDevListPage(): void {

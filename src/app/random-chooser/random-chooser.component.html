@@ -1,2 +1,9 @@
-<app-timer></app-timer>
+<mat-card>
+    <button mat-button color="accent">Choose a Dev</button>
+    <p>{{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}</p>
+    <img src="[currentImage]" alt="No image for this dev.">
+</mat-card>
+<mat-slide-toggle [(ngModel)]="showTimer">Show Timer</mat-slide-toggle>
+<app-timer *ngIf="showTimer"></app-timer>
+<br>
 <button mat-button color="primary"  (click)="onGoToDevListPage()">Change Devs list</button>
