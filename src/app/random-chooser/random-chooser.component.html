@@ -3,9 +3,11 @@
     <br>
     <mat-card *ngIf="actualTeamMember!=undefined">
         {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
-        <br>
-        <img src="[currentImage]" alt="No image for this dev.">
-        <br>
+        <div *ngIf="actualTeamMember.picture!=''">
+            <br>
+            <img src="[currentImage]" alt="No image for this dev." >
+            <br>
+        </div>
     </mat-card >
         
     <mat-card *ngIf="actualTeamMember==undefined">
