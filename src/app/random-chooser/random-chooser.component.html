@@ -1,9 +1,18 @@
-<mat-card>
-    <button mat-button color="accent" (click)="onChooseDev()">Choose a Dev</button>
-    <p>{{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}</p>
-    <img src="[currentImage]" alt="No image for this dev.">
-</mat-card>
-<mat-slide-toggle [(ngModel)]="showTimer">Show Timer</mat-slide-toggle>
-<app-timer *ngIf="showTimer"></app-timer>
+<button mat-stroked-button color="primary" (click)="onChooseDev()">Choose a Dev</button>
 <br>
-<button mat-button color="primary"  (click)="onGoToDevListPage()">Change Devs list</button>
+<math-card *ngIf="actualTeamMember">
+    {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
+    <br>
+    <img src="[currentImage]" alt="No image for this dev.">
+    <br>
+</math-card>
+
+<mat-slide-toggle [(ngModel)]="showTimer">Timer</mat-slide-toggle>
+
+<br>
+
+<app-timer *ngIf="showTimer"></app-timer>
+
+<br>
+
+<button mat-stroked-button color="primary"  (click)="onGoToDevListPage()">Change Devs list</button>

@@ -9,8 +9,11 @@ import { TeamMember } from '../TeamMember';
   styleUrls: ['./random-chooser.component.scss']
 })
 export class RandomChooserComponent implements OnInit {
-
-  public actualTeamMember: TeamMember = { firstName:'still no', lastName: 'dev chosen', picture:''};
+  // The teamMember actually show in the window.
+  public actualTeamMember: TeamMember;
+  // If no actual team Member, show this message
+  public readonly: string = "click on the button above to choose a dev";
+  
   public currentImage: string = null;
   public showTimer: false;
   private teamMembers: TeamMember[];
@@ -28,9 +31,13 @@ export class RandomChooserComponent implements OnInit {
   }
 
   public onChooseDev() {
-    let i = Math.floor(Math.random()*this.teamMembers.length);
-    this.actualTeamMember = this.teamMembers[i];
-    this.teamMembers.splice(i,1);
+    if(this.teamMembers.length>0){
+      let i = Math.floor(Math.random()*this.teamMembers.length);
+      this.actualTeamMember = this.teamMembers[i];
+      this.teamMembers.splice(i,1);
+    } else {
+      this.actualTeamMember = { firstName: 'No team members left!', lastName: '', picture: '' };
+    }
   }
 
   public onGoToDevListPage(): void {

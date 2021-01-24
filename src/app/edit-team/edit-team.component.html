@@ -2,33 +2,34 @@
     <h1>Your team members </h1>
    
     <div class="list">
-  
+        <!-- The fields for adding a teamMember -->
         <h3>Add a new team member to the meeting</h3>
-  
         <form class="example-form">
-
           <mat-form-field class="example-form-field">
               <input matInput type="text" placeholder="First name"              
                 [(ngModel)]="firstName" 
                 [ngModelOptions]="{standalone: true}" 
                 (keyup.enter)="onAddingNewTeamMember()">
-        </mat-form-field> <br/>
-        <mat-form-field class="example-form-field">
+          </mat-form-field> 
+          <mat-form-field class="example-form-field">
 
-                <input matInput type="text" placeholder="Last name"              
-                [(ngModel)]="lastName" 
-                [ngModelOptions]="{standalone: true}" 
-                (keyup.enter)="onAddingNewTeamMember()">
-        </mat-form-field> <br>
+                  <input matInput type="text" placeholder="Last name"              
+                  [(ngModel)]="lastName" 
+                  [ngModelOptions]="{standalone: true}" 
+                  (keyup.enter)="onAddingNewTeamMember()">
+          </mat-form-field> <br>
 
-        <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".csv"/>
-        <button mat-flat-button color="primary" (click)="csvInput.click()">Upload a picture</button> <br/>
-      
-        <button mat-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
-        <button mat-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
+          <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".csv"/>
+          <button mat-flat-button color="primary" (click)="csvInput.click()">Upload a picture</button> <br/>
         
-      </form>
+          <button mat-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
+          <button mat-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
+        </form>
     </div>  
   
-    <button mat-button color="primary"  (click)="onGoToDevListPage()">Return</button>  
+    <button mat-button color="primary"  (click)="onGoToDevListPage()">Return</button> 
+    <!-- lists existing members of the team -->
+    <mat-card *ngFor='let member of teamMembers'>
+      <mat-list-item>{{ member.firstName }} {{ member.lastName }}</mat-list-item>
+    </mat-card>
   </div>
