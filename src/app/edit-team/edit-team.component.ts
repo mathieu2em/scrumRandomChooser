@@ -1,5 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TeamMembersManagerService } from '../team-members-manager.service';
 import { TeamMember } from '../TeamMember';
 
 @Component({
@@ -8,55 +10,27 @@ import { TeamMember } from '../TeamMember';
   styleUrls: ['./edit-team.component.scss']
 })
 export class EditTeamComponent implements OnInit {
-  firstname = '';
-  lastname = '';
+  firstName = '';
+  lastName = '';
 
-  public todo: TeamMember[] = [
-    {
-      "firstname": "Alexandre",
-      "lastname": "Chartrand",
-      "picture": ""
-    },
-    {
-      "firstname": "Mathieu",
-      "lastname": "Perron",
-      "picture": ""
-    },
-    {
-      "firstname": "Élodie",
-      "lastname": "Bérubé",
-      "picture": ""
-    }
-  ];
+  public activeTeam: TeamMember[];
 
-public done: TeamMember[] = [
-  {
-    "firstname": "Bob",
-    "lastname": "Terrier",
-    "picture": ""
-  },
-  {
-    "firstname": "Mathieu",
-    "lastname": "Olivier",
-    "picture": ""
-  },
-  {
-    "firstname": "Fabian",
-    "lastname": "Charest",
-    "picture": ""
-  }
-  ];
+  public inactiveTeam: TeamMember[];
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private readonly _tmService: TeamMembersManagerService) 
+  { }
 
   ngOnInit(): void {
   }
 
   onAddingNewTeamMember(){
 
-      // Validations
-    if (this.firstname.trim() != "" || this.lastname.trim() != "" ){
-      this.todo.push({ firstname: this.firstname, lastname: this.lastname, picture: "" });
+    // Validations
+    if (this.firstName.trim() != "" || this.lastName.trim() != "" ){
+      // Add the newly created member to persistent memory
+      let teamMember: TeamMember = { firstName: this.firstName, lastName: this.lastName, picture: "" };
+      this._tmService.addMember(teamMember);
     }
 
       // TODO : Display the invalid input validation in a message box.
@@ -69,8 +43,8 @@ public done: TeamMember[] = [
   }
 
   onClearNewTeamMember() {
-    this.firstname = "";
-    this.lastname = "";
+    this.firstName = "";
+    this.lastName = "";
   }
 
   public onGoToDevListPage(): void {

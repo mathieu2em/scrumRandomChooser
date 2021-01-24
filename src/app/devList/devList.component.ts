@@ -6,6 +6,7 @@
     transferArrayItem
   } from '@angular/cdk/drag-drop';
   import { TeamMember } from '../TeamMember';
+import { TeamMembersManagerService } from '../team-members-manager.service';
 
   @Component({
     selector: 'app-devList',
@@ -15,54 +16,17 @@
   export class DevListComponent implements OnInit {
     value = "";
 
+    public activeTeamMembers: TeamMember[] = [];
+    public inactiveTeamMembers: TeamMember[] = [];
 
-  public todo: TeamMember[] = [
-      {
-        "firstname": "Alexandre",
-        "lastname": "Chartrand",
-        "picture": ""
-      },
-      {
-        "firstname": "Mathieu",
-        "lastname": "Perron",
-        "picture": ""
-      },
-      {
-        "firstname": "Élodie",
-        "lastname": "Bérubé",
-        "picture": ""
-      }
-    ];
-
-  public done: TeamMember[] = [
-    {
-      "firstname": "Bob",
-      "lastname": "Terrier",
-      "picture": ""
-    },
-    {
-      "firstname": "Mathieu",
-      "lastname": "Olivier",
-      "picture": ""
-    },
-    {
-      "firstname": "Fabian",
-      "lastname": "Charest",
-      "picture": ""
-    }
-    ];
-
-
-  constructor(private router:Router) {}
+  constructor(
+    private router:Router,
+    private readonly _tmService: TeamMembersManagerService) {
+    this.activeTeamMembers = this._tmService.getTeamMembers();
+    console.log(this.activeTeamMembers);
+  }
 
   ngOnInit() {}
-
-  /*
-  onSubmit() {
-      this.todo.push({ title: this.value, date: new Date().toString() });
-      this.value = '';
-    }
-  */
 
   clearInput(event: MouseEvent) {
       if ((<HTMLElement>event.target).nodeName === 'MAT-ICON') {
@@ -71,13 +35,13 @@
     }
 
   deleteTask(index: number) {
-      this.done.splice(index, 1);
-    }
+      this.inactiveTeamMembers.splice(index, 1);
+  }
 
   onAreaListControlChanged(index: number) {
       setTimeout(() => {
-        const task = this.todo.splice(index, 1);
-        this.done.unshift(task[0]);
+        const task = this.activeTeamMembers.splice(index, 1);
+        this.inactiveTeamMembers.unshift(task[0]);
       }, 1000);
     }
 

@@ -2,94 +2,42 @@
   <h1>Who will be present in your next meeting ?</h1>
  
   <br/>
-  <p> Drag and drop team members in the Participant or Not available colunm.</p>
+  <h2> Drag and drop team members in the Participant or Not available colunm.</h1>
   <br/>
 
+  <p *ngIf="activeTeamMembers.length < 1">No team member present on the meeting. Add at least one team member!</p>
+  <p *ngIf="activeTeamMembers.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
+  <p *ngIf="inactiveTeamMembers.length < 1"> All your team members are present on the meeting. Nice !</p>
 
-
-  <p *ngIf="todo.length < 1">No team member present on the meeting. Add at least one team member!</p>
-  <p *ngIf="todo.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
-  <p *ngIf="done.length < 1"> All your team members are present on the meeting. Nice !</p>
-
-
-
-
-  <div class="example-container">
-    <h2>Present on the meeting</h2>
+  <div cdkDropListGroup>
+    <div class="example-container">
+      <h2>Presents on the meeting</h2>
   
-    <div
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>
-
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>{{ item.firstname + " " + item.lastname }}</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
-
+      <div
+        cdkDropList
+        [cdkDropListData]="activeTeamMembers"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of activeTeamMembers" cdkDrag>
+          {{item.firstName}} {{item.lastName}}
+        </div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Absents of the meeting</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="inactiveTeamMembers"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of inactiveTeamMembers" cdkDrag>
+          {{item.firstName}} {{item.lastName}}
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="example-container">
-    <h2>Not available</h2>
-  
-    <div
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>
-
-              
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>{{ item.firstname + " " + item.lastname }}</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
-
-      </div>
-    </div>
-  </div>
-  
-  
-
-
-
-
-
-
-
-  
-      <!--
-      <h3>Add a new team member to the meeting</h3>
-
-      <form class="example-form">
-        <mat-form-field class="example-form-field">
-            <input matInput type="text" placeholder="Add a new team member here"              
-              [(ngModel)]="value" 
-              [ngModelOptions]="{standalone: true}" 
-              (keyup.enter)="onSubmit()">
-            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clearInput($event)">
-              <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-    </form>
-  </div>  
-  -->
 
   <button mat-button color="primary"  (click)="onGoToRandomChooserPage()">Return to Random Chooser</button>
   <button mat-button color="primary"  (click)="onGoToEditYourTeamPage()">Edit your team</button>

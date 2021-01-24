@@ -1,28 +1,7 @@
 <div class="container">
     <h1>Your team members </h1>
    
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
-      </div>
-      
-
-
-  
     <div class="list">
-        <h3>Present on the meeting</h3>
-        <mat-selection-list [multiple]="false" cdkDropList 
-          [cdkDropListData]="todo" 
-          [cdkDropListConnectedTo]="secondList" 
-          #firstList="cdkDropList"
-          (cdkDropListDropped)="drop($event, 'todo')">
-            <mat-list-option role="listitem" *ngFor="let task of todo; let i = index" cdkDrag>
-              {{ task.firstname }}
-              <mat-divider></mat-divider>
-            </mat-list-option>
-        </mat-selection-list>
-  
-  
-        <p *ngIf="done.length < 1"> All your team members are present on the meeting. Nice !</p>
   
         <h3>Add a new team member to the meeting</h3>
   
@@ -30,25 +9,23 @@
 
           <mat-form-field class="example-form-field">
               <input matInput type="text" placeholder="First name"              
-                [(ngModel)]="firstname" 
+                [(ngModel)]="firstName" 
                 [ngModelOptions]="{standalone: true}" 
                 (keyup.enter)="onAddingNewTeamMember()">
         </mat-form-field> <br/>
         <mat-form-field class="example-form-field">
 
                 <input matInput type="text" placeholder="Last name"              
-                [(ngModel)]="lastname" 
+                [(ngModel)]="lastName" 
                 [ngModelOptions]="{standalone: true}" 
                 (keyup.enter)="onAddingNewTeamMember()">
         </mat-form-field> <br>
 
         <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".csv"/>
         <button mat-flat-button color="primary" (click)="csvInput.click()">Upload a picture</button> <br/>
-        
-
-        <button mat-button matSuffix mat-icon-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
-
+      
+        <button mat-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
+        <button mat-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
         
       </form>
     </div>  
