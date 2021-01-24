@@ -19,12 +19,14 @@ export class EditTeamComponent implements OnInit {
               private readonly _tmService: TeamMembersManagerService) 
   { 
     this.teamMembers = _tmService.getTeamMembers();
+    console.log('edit team constructor');
+    console.log(this.teamMembers);
   }
 
   ngOnInit(): void {
   }
 
-  onAddingNewTeamMember(){
+  public onAddingNewTeamMember(){
 
     // Validations
     if (this.firstName.trim() != "" || this.lastName.trim() != "" ){
@@ -42,7 +44,7 @@ export class EditTeamComponent implements OnInit {
     this.onClearNewTeamMember();
   }
 
-  onClearNewTeamMember() {
+  private onClearNewTeamMember() {
     this.firstName = "";
     this.lastName = "";
   }
@@ -50,4 +52,11 @@ export class EditTeamComponent implements OnInit {
   public onGoToDevListPage(): void {
     this.router.navigate(['devList']);
   }
+
+  public removeItem(tm: TeamMember){
+    this.teamMembers.splice(this.teamMembers.indexOf(tm), 1);
+    this._tmService.setTeamMembers(this.teamMembers);
+    this._tmService.setActiveTeamMembers(this.teamMembers);
+  }
+
 }

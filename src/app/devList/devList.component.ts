@@ -22,8 +22,17 @@ import { TeamMembersManagerService } from '../team-members-manager.service';
   constructor(
     private router:Router,
     private readonly _tmService: TeamMembersManagerService) {
-    this.activeTeamMembers = this._tmService.getTeamMembers();
+    this.activeTeamMembers = [...this._tmService.getActiveTeamMembers()];
+    this.inactiveTeamMembers = [...this._tmService.getTeamMembers()].filter((tm) => {
+      console.log(tm);
+      console.log(this.activeTeamMembers.indexOf(tm));
+      return this.activeTeamMembers.find((item) => 
+         item.firstName == tm.firstName 
+      && item.lastName == tm.lastName 
+      && item.picture == tm.picture) == undefined ;
+    });
     console.log(this.activeTeamMembers);
+    console.log('constructor of devlist');
   }
 
   ngOnInit() {}
@@ -32,7 +41,7 @@ import { TeamMembersManagerService } from '../team-members-manager.service';
       if ((<HTMLElement>event.target).nodeName === 'MAT-ICON') {
         this.value = '';
       }
-    }
+  }
 
   deleteTask(index: number) {
       this.inactiveTeamMembers.splice(index, 1);
@@ -62,5 +71,7 @@ import { TeamMembersManagerService } from '../team-members-manager.service';
                           event.previousIndex,
                           event.currentIndex);
       }
+      this._tmService.setActiveTeamMembers(this.activeTeamMembers);
+
     }
   }

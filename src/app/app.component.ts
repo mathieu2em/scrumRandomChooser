@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(
     private electronService: ElectronService,
     private translate: TranslateService,
-    private readonly _tmmService: TeamMembersManagerService
+
   ) {
     this.translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);

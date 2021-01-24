@@ -1,4 +1,4 @@
-<div class="container">
+<mat-card class="container">
   <h1>Who will be present in your next meeting ?</h1>
   <p *ngIf="activeTeamMembers.length < 1">No team member present on the meeting. Add at least one team member!</p>
   <p *ngIf="activeTeamMembers.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
@@ -36,4 +36,4 @@
   <button mat-button color="primary"  (click)="onGoToRandomChooserPage()">Return to Random Chooser</button>
   <button mat-button color="primary"  (click)="onGoToEditYourTeamPage()">Edit your team</button>
 
-</div>
+</mat-card>

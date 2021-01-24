@@ -1,18 +1,24 @@
-<button mat-stroked-button color="primary" (click)="onChooseDev()">Choose a Dev</button>
-<br>
-<math-card *ngIf="actualTeamMember">
-    {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
+<mat-card>
+    <button mat-stroked-button color="primary" (click)="onChooseDev()">Choose a Dev</button>
     <br>
-    <img src="[currentImage]" alt="No image for this dev.">
+    <mat-card *ngIf="actualTeamMember!=undefined">
+        {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
+        <br>
+        <img src="[currentImage]" alt="No image for this dev.">
+        <br>
+    </mat-card >
+        
+    <mat-card *ngIf="actualTeamMember==undefined">
+        {{ startEndMessage }}
+    </mat-card>
+
+    <mat-slide-toggle [(ngModel)]="showTimer">Timer</mat-slide-toggle>
+
     <br>
-</math-card>
 
-<mat-slide-toggle [(ngModel)]="showTimer">Timer</mat-slide-toggle>
+    <app-timer *ngIf="showTimer"></app-timer>
 
-<br>
+    <br>
 
-<app-timer *ngIf="showTimer"></app-timer>
-
-<br>
-
-<button mat-stroked-button color="primary"  (click)="onGoToDevListPage()">Change Devs list</button>
+    <button mat-stroked-button color="primary"  (click)="onGoToDevListPage()">Change Devs list</button>
+</mat-card>

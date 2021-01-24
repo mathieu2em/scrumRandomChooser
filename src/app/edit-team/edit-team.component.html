@@ -29,7 +29,11 @@
   
     <button mat-button color="primary"  (click)="onGoToDevListPage()">Return</button> 
     <!-- lists existing members of the team -->
-    <mat-card *ngFor='let member of teamMembers'>
-      <mat-list-item>{{ member.firstName }} {{ member.lastName }}</mat-list-item>
+    <mat-card class="teamMembers" *ngFor='let member of teamMembers'>
+      <mat-list-item id="name">
+          {{ member.firstName }} {{ member.lastName }}
+          <button id="del_btn" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="removeItem(member)">
+          </button>
+      </mat-list-item>
     </mat-card>
   </div>

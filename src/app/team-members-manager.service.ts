@@ -23,6 +23,7 @@ export class TeamMembersManagerService {
 
   public addMember(tm: TeamMember, active: boolean){
     this.teamMembers.push(tm);
+    this.activeTeamMembers.push(tm);
     this.SaveTeamMembersToLocalStorage(this.teamMembers, this.activeTeamMembers);
   }
 
@@ -40,8 +41,18 @@ export class TeamMembersManagerService {
     return this.teamMembers;
   }
 
+  public getActiveTeamMembers(): TeamMember[]{
+    return this.activeTeamMembers;
+  }
+
   public setTeamMembers(tms : TeamMember[]): void {
     this.teamMembers = tms;
+    this.SaveTeamMembersToLocalStorage(this.teamMembers, this.activeTeamMembers);
+  }
+
+  public setActiveTeamMembers(atms: TeamMember[]){
+    this.activeTeamMembers = atms;
+    this.SaveTeamMembersToLocalStorage(this.teamMembers, this.activeTeamMembers);
   }
 
   // Get a teamMember list from memory.
@@ -57,7 +68,7 @@ export class TeamMembersManagerService {
 
   // Save the teamMembers array to memory as a JSON.
   private SaveTeamMembersToLocalStorage(teamMembers: TeamMember[], activeTeamMembers: TeamMember[]){
-    window.localStorage.setItem('TeamMembers',JSON.stringify(teamMembers));
+    window.localStorage.setItem('teamMembers',JSON.stringify(teamMembers));
     window.localStorage.setItem('activeTeamMembers', JSON.stringify(activeTeamMembers));
   }
 }
