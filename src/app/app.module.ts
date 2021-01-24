@@ -32,6 +32,7 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TeamMembersManagerService } from './team-members-manager.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 // AoT requires an exported function for factories
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatInputModule,
     MatIconModule,
     MatSlideToggleModule,
+    NgbModule,
     DragDropModule,
     BrowserModule,
     FormsModule,
