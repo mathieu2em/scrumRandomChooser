@@ -1,5 +1,5 @@
 <mat-card>
-    <button mat-button color="accent">Choose a Dev</button>
+    <button mat-button color="accent" (click)="onChooseDev()">Choose a Dev</button>
     <p>{{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}</p>
     <img src="[currentImage]" alt="No image for this dev.">
 </mat-card>

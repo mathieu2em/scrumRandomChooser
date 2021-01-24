@@ -1,14 +1,8 @@
 <div class="container">
   <h1>Who will be present in your next meeting ?</h1>
- 
-  <br/>
-  <h2> Drag and drop team members in the Participant or Not available colunm.</h1>
-  <br/>
-
   <p *ngIf="activeTeamMembers.length < 1">No team member present on the meeting. Add at least one team member!</p>
   <p *ngIf="activeTeamMembers.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
   <p *ngIf="inactiveTeamMembers.length < 1"> All your team members are present on the meeting. Nice !</p>
-
   <div cdkDropListGroup>
     <div class="example-container">
       <h2>Presents on the meeting</h2>
