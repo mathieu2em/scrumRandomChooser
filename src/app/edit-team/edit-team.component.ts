@@ -1,8 +1,8 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TeamMembersManagerService } from '../team-members-manager.service';
 import { TeamMember } from '../TeamMember';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-team',
@@ -10,13 +10,15 @@ import { TeamMember } from '../TeamMember';
   styleUrls: ['./edit-team.component.scss']
 })
 export class EditTeamComponent implements OnInit {
-  firstName = '';
-  lastName = '';
+  public firstName:string = '';
+  public lastName:string = '';
+  public picture:string = '';
 
   public teamMembers: TeamMember[];
 
   constructor(private router:Router,
-              private readonly _tmService: TeamMembersManagerService) 
+              private readonly _tmService: TeamMembersManagerService,
+              public sanitizer: DomSanitizer) 
   { 
     this.teamMembers = _tmService.getTeamMembers();
     console.log('edit team constructor');
@@ -31,7 +33,7 @@ export class EditTeamComponent implements OnInit {
     // Validations
     if (this.firstName.trim() != "" || this.lastName.trim() != "" ){
       // Add the newly created member to persistent memory
-      let teamMember: TeamMember = { firstName: this.firstName, lastName: this.lastName, picture: "" };
+      let teamMember: TeamMember = { firstName: this.firstName, lastName: this.lastName, picture: this.picture };
       this._tmService.addMember(teamMember, true);
     }
 
@@ -47,6 +49,7 @@ export class EditTeamComponent implements OnInit {
   private onClearNewTeamMember() {
     this.firstName = "";
     this.lastName = "";
+    this.picture = "";
   }
 
   public onGoToDevListPage(): void {
@@ -57,6 +60,25 @@ export class EditTeamComponent implements OnInit {
     this.teamMembers.splice(this.teamMembers.indexOf(tm), 1);
     this._tmService.setTeamMembers(this.teamMembers);
     this._tmService.setActiveTeamMembers(this.teamMembers);
+  }
+
+  handleFileSelect(evt){
+    var files = evt.target.files;
+    var file = files[0];
+    
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+
+        reader.readAsBinaryString(file);
+    }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+   var binaryString = readerEvt.target.result;
+          this.picture= "data:image/jpg;charset=utf-8;base64," + btoa(binaryString);
+          console.log(btoa(binaryString));
   }
 
 }

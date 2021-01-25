@@ -5,7 +5,7 @@
         {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
         <div *ngIf="actualTeamMember.picture!=''">
             <br>
-            <img src="[currentImage]" alt="No image for this dev." >
+            <img [src]="currentImage" alt="No image for this dev." >
             <br>
         </div>
     </mat-card >

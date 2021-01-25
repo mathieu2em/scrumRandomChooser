@@ -18,8 +18,8 @@
                   (keyup.enter)="onAddingNewTeamMember()">
           </mat-form-field> <br>
 
-          <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".csv"/>
-          <button mat-stroked-button color="link" (click)="csvInput.click()">Upload a picture</button> <br/>
+          <label for="filePicker">Choose or drag an image file:</label><br>
+          <input type="file" id="filePicker" (change)="handleFileSelect($event)">
         
           <button mat-stroked-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
           <button mat-stroked-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
@@ -40,6 +40,9 @@
           </td>
           <td>
             {{ member.firstName }} {{ member.lastName }}
+          </td>
+          <td>
+            <img mat-card-avatar [src]="this.sanitizer.bypassSecurityTrustUrl(member.picture)" *ngIf="member.picture">
           </td>
         </tr> 
       </table>

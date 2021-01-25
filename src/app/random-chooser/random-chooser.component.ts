@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TeamMembersManagerService } from '../team-members-manager.service';
 import { TeamMember } from '../TeamMember';
@@ -14,13 +15,14 @@ export class RandomChooserComponent implements OnInit {
   // If no actual team Member, show this message
   public startEndMessage: string = "click on the button above to choose a dev";
   
-  public currentImage: string = null;
+  public currentImage: SafeUrl = null;
   public showTimer: false;
   public teamMembers: TeamMember[];
   
   constructor(
     private router: Router,
-    private readonly _tmService: TeamMembersManagerService)
+    private readonly _tmService: TeamMembersManagerService,
+    public sanitizer: DomSanitizer)
   { 
     this.teamMembers = [...this._tmService.getActiveTeamMembers()];
     console.log(this.teamMembers);
@@ -35,6 +37,7 @@ export class RandomChooserComponent implements OnInit {
       console.log(this.teamMembers.length);
       let i = Math.floor(Math.random()*this.teamMembers.length);
       this.actualTeamMember = this.teamMembers[i];
+      this.currentImage = this.sanitizer.bypassSecurityTrustUrl(this.actualTeamMember.picture);
       this.teamMembers.splice(i,1);
     } else {
       this.actualTeamMember = null;
