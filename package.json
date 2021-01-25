@@ -46,7 +46,8 @@
     "@angular/forms": "^11.0.0 || ^12.0.0-0",
     "@ng-bootstrap/ng-bootstrap": "9.0.1",
     "bootstrap": "4.0.0-alpha.6",
-    "font-awesome": "4.7.0"
+    "font-awesome": "4.7.0",
+    "ng-zorro-antd": "11.0.2"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "10.0.1",

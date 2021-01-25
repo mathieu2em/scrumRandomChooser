@@ -5,6 +5,7 @@ import { DevListRoutingModule } from './devList-routing.module';
 
 import { DevListComponent } from './devList.component';
 import { SharedModule } from '../shared/shared.module';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [DevListComponent],

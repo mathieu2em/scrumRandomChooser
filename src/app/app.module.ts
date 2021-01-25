@@ -14,6 +14,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -34,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TeamMembersManagerService } from './team-members-manager.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { CountdownModule } from 'ngx-countdown';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -44,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   declarations: [AppComponent, DevListComponent, RandomChooserComponent, TimerComponent, EditTeamComponent],
   imports: [
     BrowserAnimationsModule,
+    CountdownModule,
     MatGridListModule,
     MatInputModule,
     MatIconModule,
@@ -53,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatInputModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
     NgbModule,
     DragDropModule,
     BrowserModule,

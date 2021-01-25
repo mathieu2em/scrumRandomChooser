@@ -1,32 +1,24 @@
 
 
+  <mat-progress-spinner
+  class="example-margin"
+  [color]="primary"
+  [mode]="determinate"
+  [value]=50>
+</mat-progress-spinner>
+
+<countdown #countdown [config]="salut"> </countdown>
+<button (click)="countdown.begin()">Start</button>
+<button (click)="countdown.pause()">Pause</button>
+<button (click)="countdown.resume()">Resume</button>
+<button (click)="countdown.stop()">Stop</button>
+<button (click)="countdown.restart()">Restart</button>
+
 <mat-card>{{ displayTime }}</mat-card>
-<mat-card>
-  <button mat-button (click)="reset()">Reset</button>
-  <button mat-button  (click)="startOrStop()">{{ action }}</button><hr>
-  
-  <form [formGroup]="timerForm" (ngSubmit)="onSubmitAlarmSet()">
-    
-    <mat-label>Timer</mat-label>
-    <table class="example-full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="example-full-width">
-        <input type="text" name="duration" id="durationForm" maxlength=2 pattern="[\d]{2}"
-        title="The amount of seconds, optionally preceded by minutes"
-        placeholder="mm" formControlName="minutes" size=2 matInput>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <input  type="text" name="duration" id="durationForm" maxlength=2 pattern="[\d]{2}"
-          title="The amount of seconds, optionally preceded by minutes"
-          placeholder="ss" formControlName="seconds" size=2 matInput>
-        </mat-form-field>
-      </td>
-      <td>
-        <button mat-button color="primary" type="submit">Set</button>
-      </td>
-    </tr></table> 
-  </form>
-  
-</mat-card>
+
+<h2> Set time for each team member</h2>
+<ngb-timepicker [(ngModel)]="timeToSet" seconds="true"></ngb-timepicker>
+<button class="inline" color="primary" mat-button (click)="setTime()">Set</button>
+
+
 
