@@ -48,6 +48,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "4.7.0",
     "ng-zorro-antd": "11.0.2"
+    "ngx-countdown": "11.0.1"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "10.0.1",
