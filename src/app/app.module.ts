@@ -32,10 +32,13 @@ import { TimerComponent } from './timer/timer.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 import { TeamMembersManagerService } from './team-members-manager.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { CountdownModule } from 'ngx-countdown';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -58,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     NgbModule,
+    NzTimePickerModule,
     DragDropModule,
     BrowserModule,
     FormsModule,

@@ -9,8 +9,9 @@ import { config } from 'rxjs';
 })
 export class TimerComponent implements OnInit {
   
-  time = {minute: 0, second: 0};
-  salut = {leftTime: 5, demand: true}
+  timeToSet = {hour: 0, minute: 0, second: 0};
+  salut = {leftTime: 10, demand: true}
+  spinnerValue = 100;
 
   
   constructor(private formBuilder: FormBuilder) { }
@@ -19,8 +20,16 @@ export class TimerComponent implements OnInit {
   }
 
   setTime(){
-    this.salut.leftTime = this.time.minute*60+this.time.second
+    this.salut = 
+      {
+        leftTime: this.timeToSet.hour*3600 
+                   + this.timeToSet.minute*60
+                   + this.timeToSet.second, 
+        demand: true}
+    this.spinnerValue = 100;
   }
+
+ 
   
   
 }
