@@ -1,3 +1,41 @@
 .inline {
     display: inline-block;
 }
+
+.yolo{
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin: 30px;
+}
+.yolo2 {
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+.yolo3{
+    font-size:x-large;
+    font-weight: bold;
+    position: absolute;
+    top:180px;
+    left:100px;
+    color:purple;
+}
+
+.humain{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs2_ToobzVGOUOV58FuXau7dqGzgSqkVc-UQ&usqp=CAU');
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.coundown-center{
+    font-size:x-large;
+    font-weight: bold;
+    position: absolute;
+    left:120px;
+}
