@@ -1,9 +1,8 @@
-<mat-card>
-    <h1>Your team members </h1>
-   
+<mat-card id="container">
     <div class="list">
+      <mat-card class="card1">
         <!-- The fields for adding a teamMember -->
-        <h3>Add a new team member to the meeting</h3>
+        <mat-card-title>Add a new team member</mat-card-title>
         <form class="example-form">
           <mat-form-field class="example-form-field">
               <input matInput type="text" placeholder="First name"              
@@ -20,20 +19,29 @@
           </mat-form-field> <br>
 
           <input #csvInput hidden="true" type="file" onclick="this.value=null" accept=".csv"/>
-          <button mat-flat-button color="primary" (click)="csvInput.click()">Upload a picture</button> <br/>
+          <button mat-stroked-button color="link" (click)="csvInput.click()">Upload a picture</button> <br/>
         
-          <button mat-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
-          <button mat-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
+          <button mat-stroked-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
+          <button mat-stroked-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
         </form>
+      </mat-card>
     </div>  
-  
-    <button mat-button color="primary"  (click)="onGoToDevListPage()">Return</button> 
+    <mat-card class="card1" >
+    <button mat-stroked-button color="basic"  (click)="onGoToDevListPage()">Return</button> 
     <!-- lists existing members of the team -->
-    <mat-card class="teamMembers" *ngFor='let member of teamMembers'>
-      <mat-list-item id="name">
-          {{ member.firstName }} {{ member.lastName }}
-          <button id="del_btn" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="removeItem(member)">
-          </button>
-      </mat-list-item>
+
+      <h4>Your team members </h4>
+      <table class="teamMembers" *ngFor='let member of teamMembers'>
+        <tr>
+          <td>
+            <button  mat-mini-fab color="basic" aria-label="Example icon button with a delete icon" (click)="removeItem(member)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+          <td>
+            {{ member.firstName }} {{ member.lastName }}
+          </td>
+        </tr> 
+      </table>
     </mat-card>
 </mat-card>
