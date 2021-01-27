@@ -14,13 +14,19 @@ npm run electron:serve
 
 # TODO
 
+## Styling
+
+- [ ] Create a general mockup of the application (in WEB mode)
+- [ ] Create a general mockup of the application (in Web app - Electron mode)
+
 ## Devlist page
 
 - [x] Remove the Add Team member option. (It has been moved in the EditTeam section)
 - [x] Replace selection list by mat-cart.
 - [x] Add drag and drop feature with cart.
 - [x] Add a photo to team members with a photo uploader and memory
-- [ ] Design a mockup and determine how the page will be designed
+- [ ] Design the mockup of the devlist page and determine how it will be designed
+- [ ] Ensure the components fit on as little space as possible
 
 ## Edit team page
 
