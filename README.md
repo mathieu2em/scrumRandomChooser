@@ -20,8 +20,10 @@ npm run electron:serve
 - [x] Replace selection list by mat-cart.
 - [x] Add drag and drop feature with cart.
 - [x] Add a photo to team members with a photo uploader and memory
+- [ ] Design a mockup and determine how the page will be designed
 
 ## Edit team page
 
 - [x] Add team member should add the new member in a list.
 - [x] Add an option to remove team members of the team.
+- [ ] Make sure the drag and drop team member items contain the picture of the member.
