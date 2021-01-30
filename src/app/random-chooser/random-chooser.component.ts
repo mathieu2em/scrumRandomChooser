@@ -14,11 +14,17 @@ export class RandomChooserComponent implements OnInit {
   // The teamMember actually shown in the window.
   public actualTeamMember: TeamMember;
 
+  // If no team registered, show this message
+  public noTeamMessage: string = "No team!\nManage your teams.";
+
   // If no actual team Member, show this message
-  public startEndMessage: string = "click on the button above to choose a dev";
+  public startMessage: string = "Spin for a dev!";
   
   // If true : show the dev picture --- If false : show the placeholder
   public isDevSelected: boolean = false;
+
+  // True is a there's a team registered/selected
+  public existsTeam: boolean = false;
 
   public currentImage: SafeUrl = null;
   public showTimer: false;
@@ -35,6 +41,7 @@ export class RandomChooserComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.existsTeam = this.teamMembers.length > 0;
   }
 
   public onChooseDev() {
@@ -47,7 +54,6 @@ export class RandomChooserComponent implements OnInit {
       this.isDevSelected = true;
     } else {
       this.actualTeamMember = null;
-      this.startEndMessage = "No team members left!";
       this.isDevSelected = false;
     }
   }

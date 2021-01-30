@@ -1,32 +1,63 @@
+<div class="timer">
 
+  <div class="timer__display-area">
 
-<mat-card>{{ displayTime }}</mat-card>
-<mat-card>
-  <button mat-button (click)="reset()">Reset</button>
-  <button mat-button  (click)="startOrStop()">{{ action }}</button><hr>
-  
-  <form [formGroup]="timerForm" (ngSubmit)="onSubmitAlarmSet()">
-    
-    <mat-label>Timer</mat-label>
-    <table class="example-full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="example-full-width">
-        <input type="text" name="duration" id="durationForm" maxlength=2 pattern="[\d]{2}"
-        title="The amount of seconds, optionally preceded by minutes"
-        placeholder="mm" formControlName="minutes" size=2 matInput>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width">
-          <input  type="text" name="duration" id="durationForm" maxlength=2 pattern="[\d]{2}"
-          title="The amount of seconds, optionally preceded by minutes"
-          placeholder="ss" formControlName="seconds" size=2 matInput>
-        </mat-form-field>
-      </td>
-      <td>
-        <button mat-button color="primary" type="submit">Set</button>
-      </td>
-    </tr></table> 
+    <div class="timer__time-box">
+        <span class="timer__time">{{ displayTime }}</span>
+    </div>
+
+    <div class="timer__display-area__controls">
+      
+      <button class="timer__play-stop-btn"
+              type="button"
+              (click)="startOrStop()">
+      
+          <i *ngIf="action == 'start'"
+            class="timer__play-btn-icon"></i>
+      
+          <i *ngIf="action == 'stop'"
+            class="timer__stop-btn-icon"></i>
+      </button>
+
+      <button class="timer__reset-btn"
+              type="button" 
+              (click)="reset()">
+          <i class="timer__reset-btn-icon"></i>
+      </button>
+
+    </div>
+  </div>
+
+  <form class="timer__settings" 
+        [formGroup]="timerForm" 
+        (ngSubmit)="onSubmitAlarmSet()">
+
+    <input class="timer__settings__input-min"
+          type="number" 
+          name="minutes" 
+          id="minutes-form"
+          min="0"
+          max="60"
+          title="The amount of minutes"
+          placeholder="m"
+          formControlName="minutes">
+
+    <span class="timer__settings__time-colon">:</span>
+    <input class="timer__settings__input-sec"
+          type="number" 
+          name="seconds" 
+          id="seconds-form"
+          min="0"
+          max="59"
+          step="1"
+          value="00"
+          title="The amount of seconds"
+          placeholder="s"
+          formControlName="seconds">
+
+    <button class="timer__set-btn"
+            type="submit">
+      <i class="timer__set-btn-icon"></i>
+    </button>
   </form>
-  
-</mat-card>
-
+</div>

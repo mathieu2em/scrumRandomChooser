@@ -16,7 +16,7 @@
     <div *ngIf="isDevSelected"
          class="random-chooser__current-dev-container">
 
-        <div class="cropper">
+        <div class="random-chooser__current-dev-container__cropper">
             <img class="random-chooser__current-dev-container__dev-picture"
                 [src]="currentImage" 
                 alt="Current developer picture">
@@ -31,17 +31,52 @@
              alt="No Picture Placeholder">
     </div>
 
-    <button class="random-chooser__dev-btn" (click)="onChooseDev()">
-        Choose a Dev
-    </button>
+    <div class="random-chooser__controls">
 
-    <div *ngIf="actualTeamMember==undefined">
-        {{ startEndMessage }}
+
+        <button class="random-chooser__add-btn"
+                type="button"
+                (click)="onGoToDevListPage()">
+
+            <i class="random-chooser__add-btn-icon"></i>
+
+            <span *ngIf="!existsTeam"
+                  class="random-chooser__add-btn__tooltip">
+                {{ noTeamMessage }}
+            </span>
+
+        </button>
+
+        <button class="random-chooser__spin-btn"
+                type="button"
+                (click)="onChooseDev()">
+
+            <i class="random-chooser__spin-btn-icon"></i>
+
+            <span *ngIf="existsTeam && !actualTeamMember"
+                  class="random-chooser__spin-btn__tooltip">
+                {{ startMessage }}
+            </span>
+
+        </button>
+
+        <div class="random-chooser__timer-area">
+
+            <app-timer [ngClass]="{
+                'app-timer--retracted': !showTimer,
+                'app-timer--expanded': showTimer
+                }">
+            </app-timer>
+
+            <button type="button" 
+                    (click)="showTimer = !showTimer"
+                    class="random-chooser__timer-btn"
+                    [ngClass]="{'random-chooser__timer-btn--active': showTimer}">
+                <i class="random-chooser__timer-btn-icon"></i>
+            </button>
+        </div>
+
     </div>
-
-    <mat-slide-toggle [(ngModel)]="showTimer">Timer</mat-slide-toggle>
-
-    <app-timer *ngIf="showTimer"></app-timer>
-
-    <button (click)="onGoToDevListPage()">Change Devs list</button>
 </div>
+
+<!-- *ngIf="showTimer" -->
