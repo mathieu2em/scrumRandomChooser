@@ -1,0 +1,136 @@
+@import "../shared/styles/colors";
+
+:host {
+    position: absolute;
+    top: -1.4rem;
+    left: -7.8rem;
+    transition: transform 0.2s ease-out;
+}
+
+:host(.app-timer--retracted) {
+    transform: scale(0, 0);
+}
+
+:host(.app-timer--expanded) {
+    transform: scale(1, 1);
+}
+
+
+
+.timer__display-area {
+    display: flex;
+    align-items: center;
+
+    padding: 0.2rem;
+    margin-bottom: 0.2rem;
+    background-color: $purple-filter;
+    border-radius: 0.2rem;
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.timer {
+
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+    &__time-box {
+        display: flex;
+        align-items: center;
+        height: 2.2rem;
+        padding: 0 0.4rem;
+        margin-right: 0.2rem;
+        background-color: $gray-secondary;
+        border-radius: .1rem;
+    }
+
+    &__time {
+        color: $blue-primary;
+        padding-top: .1rem;
+    }
+
+    &__reset-btn,
+    &__play-stop-btn,
+    &__set-btn {
+        display: flex;
+        place-items: center;
+        width: 1rem;
+        height: 1rem;
+        border: none;
+        border-radius: 0.1rem;
+        background: $gray-secondary;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+        
+        & i {
+            display: block;
+            width: 70%;
+            height: 70%;
+            margin: 0 auto;
+        }
+        
+        &:hover {
+            background-color: $gray-primary;
+        }
+        
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__reset-btn {
+        margin-top: 0.2rem;
+    }
+
+    &__reset-btn-icon {
+        background: url(../../assets/images/cancel-icon.svg);
+    }
+
+    &__play-btn-icon {
+        background: url(../../assets/images/play-icon.svg);
+    }
+
+    &__stop-btn-icon {
+        background: url(../../assets/images/stop-icon.svg);
+    }
+
+    &__set-btn-icon {
+        background: url(../../assets/images/timer-icon.svg);
+    }
+
+    &__settings {
+
+        display: flex;
+        align-items: center;
+
+        height: auto;
+        padding: 0.2rem;
+        background-color: $purple-filter;
+        border-radius: 0.2rem;
+
+        &__input-min,
+        &__input-sec {
+            width: 2.5rem;
+            padding: 0.2rem;
+            margin-right: 0.2rem;
+            border: none;
+            border-radius: 0.1rem;
+            text-align: right;
+            color: $blue-primary;
+            background-color: $gray-secondary;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        &__time-colon {
+            margin-right: 0.2rem;
+            color: $purple-primary;
+        }
+    }
+}
