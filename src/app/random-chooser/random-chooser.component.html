@@ -12,6 +12,14 @@
         </button>
     </div>
 
+    <div class="random-chooser__dev-name-display">
+        <span *ngIf="isDevSelected" 
+              class="random-chooser__current-dev-container__dev-name">
+            {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
+        </span>
+    </div>
+
+
     
     <div *ngIf="isDevSelected"
          class="random-chooser__current-dev-container">
@@ -19,7 +27,7 @@
         <div class="random-chooser__current-dev-container__cropper">
             <img class="random-chooser__current-dev-container__dev-picture"
                 [src]="currentImage" 
-                alt="Current developer picture">
+                alt="Current developer picture"/>
         </div>
     </div>
 
@@ -28,7 +36,7 @@
 
         <img class="random-chooser__current-dev-container__dev-picture-placeholder"
              src="../../assets/images/picture_placeholder.svg" 
-             alt="No Picture Placeholder">
+             alt="No Picture Placeholder"/>
     </div>
 
     <div class="random-chooser__controls">
@@ -78,5 +86,3 @@
 
     </div>
 </div>
-
-<!-- *ngIf="showTimer" -->
