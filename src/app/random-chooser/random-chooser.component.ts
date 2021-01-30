@@ -10,11 +10,16 @@ import { TeamMember } from '../TeamMember';
   styleUrls: ['./random-chooser.component.scss']
 })
 export class RandomChooserComponent implements OnInit {
-  // The teamMember actually show in the window.
+
+  // The teamMember actually shown in the window.
   public actualTeamMember: TeamMember;
+
   // If no actual team Member, show this message
   public startEndMessage: string = "click on the button above to choose a dev";
   
+  // If true : show the dev picture --- If false : show the placeholder
+  public isDevSelected: boolean = false;
+
   public currentImage: SafeUrl = null;
   public showTimer: false;
   public teamMembers: TeamMember[];
@@ -39,9 +44,11 @@ export class RandomChooserComponent implements OnInit {
       this.actualTeamMember = this.teamMembers[i];
       this.currentImage = this.sanitizer.bypassSecurityTrustUrl(this.actualTeamMember.picture);
       this.teamMembers.splice(i,1);
+      this.isDevSelected = true;
     } else {
       this.actualTeamMember = null;
       this.startEndMessage = "No team members left!";
+      this.isDevSelected = false;
     }
   }
 

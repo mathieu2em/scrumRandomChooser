@@ -1,3 +1,28 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "~bootstrap/scss/bootstrap";
+@import "./app/shared/styles/colors";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: $blue-primary;
+}
+
+.app-root__loading-image {
+    // Sets the top-left corner of the image in the center
+    // of the parent container.
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+
+    // Translates the image to half its size, up and left, so
+    // the center is bang in the middle of the parent container
+    // (because of the previous properties above).
+    transform:translate(-50%,-50%);
+}

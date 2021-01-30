@@ -1,26 +1,47 @@
-<mat-card id="container">
-    <button mat-stroked-button color="primary" (click)="onChooseDev()">Choose a Dev</button>
-    <br>
-    <mat-card *ngIf="actualTeamMember!=undefined">
-        {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
-        <div *ngIf="actualTeamMember.picture!=''">
-            <br>
-            <img [src]="currentImage" alt="No image for this dev." >
-            <br>
+<div class="random-chooser">
+
+    <div class="random-chooser__header">
+        <img class="random-chooser__logo"
+            src="../../assets/images/logo.svg"
+            alt="Random Chooser Logo"/>
+
+
+        <button class="random-chooser__settings-btn"
+                type="button">
+                <i class="random-chooser__settings-btn-icon"></i>
+        </button>
+    </div>
+
+    
+    <div *ngIf="isDevSelected"
+         class="random-chooser__current-dev-container">
+
+        <div class="cropper">
+            <img class="random-chooser__current-dev-container__dev-picture"
+                [src]="currentImage" 
+                alt="Current developer picture">
         </div>
-    </mat-card >
-        
-    <mat-card *ngIf="actualTeamMember==undefined">
+    </div>
+
+    <div *ngIf="!isDevSelected"
+         class="random-chooser__current-dev-container">
+
+        <img class="random-chooser__current-dev-container__dev-picture-placeholder"
+             src="../../assets/images/picture_placeholder.svg" 
+             alt="No Picture Placeholder">
+    </div>
+
+    <button class="random-chooser__dev-btn" (click)="onChooseDev()">
+        Choose a Dev
+    </button>
+
+    <div *ngIf="actualTeamMember==undefined">
         {{ startEndMessage }}
-    </mat-card>
+    </div>
 
     <mat-slide-toggle [(ngModel)]="showTimer">Timer</mat-slide-toggle>
 
-    <br>
-
     <app-timer *ngIf="showTimer"></app-timer>
 
-    <br>
-
-    <button mat-stroked-button color="primary"  (click)="onGoToDevListPage()">Change Devs list</button>
-</mat-card>
+    <button (click)="onGoToDevListPage()">Change Devs list</button>
+</div>

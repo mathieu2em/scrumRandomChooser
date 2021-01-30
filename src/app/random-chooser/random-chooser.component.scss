@@ -1,4 +1,83 @@
-#container {
-    width: 400px;
-    background-color: lightgray;
+@import "../shared/styles/colors";
+
+$picture-size: calc(60vw);
+
+.random-chooser {
+    display: flex;
+    flex-direction: column;
+
+    background-color:$blue-primary;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+
+    &__header {
+        flex: 0 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    &__settings-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0.4rem;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+
+        & i {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: url(../../assets/images/icon_cog.svg);
+        }
+
+        &:hover {
+            background-color: $purple-filter;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 .1rem .1rem $purple-primary;
+        }
+    }
 }
+
+.random-chooser__current-dev-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+
+    &__dev-picture {
+        display: block;
+        height: 100%;
+
+        &-placeholder {
+            flex: 0 1 25rem;
+
+            display: block;
+            min-width: 15rem;
+        }
+    }
+}
+
+.cropper {
+    width: 15rem;
+    height: 15rem;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: thick solid;
+}
+
