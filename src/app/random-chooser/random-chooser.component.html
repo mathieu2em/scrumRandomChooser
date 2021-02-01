@@ -1,10 +1,11 @@
 <div class="random-chooser">
 
     <div class="random-chooser__header">
-        <img class="random-chooser__logo"
-            src="../../assets/images/logo.svg"
-            alt="Random Chooser Logo"/>
-
+        <a href="localhost:4200">
+            <img class="random-chooser__logo"
+                src="../../assets/images/logo.svg"
+                alt="Random Chooser Logo"/>
+        </a>
 
         <button class="random-chooser__settings-btn"
                 type="button">
@@ -12,9 +13,9 @@
         </button>
     </div>
 
-    <div class="random-chooser__dev-name-display">
-        <span *ngIf="isDevSelected" 
-              class="random-chooser__current-dev-container__dev-name">
+    <div *ngIf="isDevSelected" 
+         class="random-chooser__dev-name-display">
+        <span class="random-chooser__current-dev-container__dev-name">
             {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
         </span>
     </div>
