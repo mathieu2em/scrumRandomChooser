@@ -1,37 +1,77 @@
-<mat-card class="container">
-  <h3>Who will be present in your next meeting ?</h3>
-  <p *ngIf="activeTeamMembers.length < 1">No team member present on the meeting. Add at least one team member!</p>
-  <p *ngIf="activeTeamMembers.length == 1">A meeting alone will be very boring. Add at least another team member to feel less lonely.</p>
-  <p *ngIf="inactiveTeamMembers.length < 1"> All your team members are present on the meeting. Nice !</p>
-  <div cdkDropListGroup>
-    <div class="example-container">
-      <h4>Presents on the meeting</h4>
-      <div
-        cdkDropList
-        [cdkDropListData]="activeTeamMembers"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of activeTeamMembers" cdkDrag>
-          {{item.firstName}} {{item.lastName}}
-        </div>
+<div class="dev-list__header">
+    <button class="dev-list__back-btn"
+            type="button"
+            (click)="onGoToRandomChooserPage()">
+        <i class="dev-list__back-btn-icon"></i>
+    </button>
+
+    <button class="dev-list__manage-team-btn"
+            type="button"
+            (click)="onGoToEditYourTeamPage()">
+        <i class="dev-list__manage-team-btn-icon"></i>
+    </button>
+</div>
+
+
+<h2 class="dev-list__intro-msg">
+  Who will be present in your next meeting ?
+</h2>
+
+
+<div class="dev-list__team-state-msg-area">
+  <p *ngIf="activeTeamMembers.length < 1"
+    class="dev-list__team-state-msg">
+        <i class="dev-list__team-state-msg__logo"></i> No team member present on the meeting. Add at least one team member!
+  </p>
+
+  <p *ngIf="activeTeamMembers.length == 1"
+    class="dev-list__team-state-msg">
+    <i class="dev-list__team-state-msg__logo"></i> A meeting alone will be very boring. Add at least another team member to feel less lonely.
+  </p>
+
+  <p *ngIf="inactiveTeamMembers.length < 1"
+    class="dev-list__team-state-msg">
+    <i class="dev-list__team-state-msg__logo"></i> All your team members are present on the meeting. Nice !
+  </p>
+</div>
+
+<div cdkDropListGroup class="dev-list__lists-area">
+
+  <div class="dev-list__present-list-area">
+
+    <h4>Present</h4>
+
+    <div cdkDropList
+          [cdkDropListData]="activeTeamMembers"
+          class="dev-list__present-list"
+          (cdkDropListDropped)="drop($event)">
+
+      <div cdkDrag
+            *ngFor="let member of activeTeamMembers"
+            class="dev-list__present-list__item">
+        <i class="dev-list__present-list__item__grab-icon"></i> 
+        {{member.firstName}} {{member.lastName}}
       </div>
-    </div>
-  
-    <div class="example-container">
-      <h4>Absents of the meeting</h4>
-      <div
-        cdkDropList
-        [cdkDropListData]="inactiveTeamMembers"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of inactiveTeamMembers" cdkDrag>
-          {{item.firstName}} {{item.lastName}}
-        </div>
-      </div>
+
     </div>
   </div>
 
-  <button mat-stroked-button color="primary"  (click)="onGoToRandomChooserPage()">Return to Random Chooser</button>
-  <button mat-stroked-button color="primary"  (click)="onGoToEditYourTeamPage()">Edit your team</button>
+  <div class="dev-list__absent-list-area">
 
-</mat-card>
+    <h4>Absent</h4>
+
+    <div cdkDropList
+          [cdkDropListData]="inactiveTeamMembers"
+          class="dev-list__absent-list"
+          (cdkDropListDropped)="drop($event)">
+
+      <div cdkDrag
+            *ngFor="let member of inactiveTeamMembers"
+            class="dev-list__absent-list__item">
+        <i class="dev-list__absent-list__item__grab-icon"></i> 
+        {{member.firstName}} {{member.lastName}}
+      </div>
+
+    </div>
+  </div>
+</div>
