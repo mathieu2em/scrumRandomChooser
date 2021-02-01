@@ -159,6 +159,8 @@
     &__present-list-area,
     &__absent-list-area {
       flex: 0 0 15rem;
+      width: 100%;
+      min-height: 2.9rem;
     }
 
     &__present-list-area {
