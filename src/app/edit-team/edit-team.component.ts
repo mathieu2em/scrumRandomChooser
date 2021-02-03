@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TeamMembersManagerService } from '../team-members-manager.service';
 import { TeamMember } from '../TeamMember';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-team',
@@ -10,11 +10,14 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
   styleUrls: ['./edit-team.component.scss']
 })
 export class EditTeamComponent implements OnInit {
+  private picturePlaceholderURL: string = "../../assets/images/camera-icon.svg";
+
   public firstName:string = '';
   public lastName:string = '';
-  public picture:string = '';
+  public picture:string = this.picturePlaceholderURL;
 
   public teamMembers: TeamMember[];
+
 
   constructor(private router:Router,
               private readonly _tmService: TeamMembersManagerService,
@@ -49,7 +52,7 @@ export class EditTeamComponent implements OnInit {
   private onClearNewTeamMember() {
     this.firstName = "";
     this.lastName = "";
-    this.picture = "";
+    this.picture = this.picturePlaceholderURL;
   }
 
   public onGoToDevListPage(): void {

@@ -1,50 +1,106 @@
-<mat-card id="container">
-    <div class="list">
-      <mat-card class="card1">
-        <!-- The fields for adding a teamMember -->
-        <mat-card-title>Add a new team member</mat-card-title>
-        <form class="example-form">
-          <mat-form-field class="example-form-field">
-              <input matInput type="text" placeholder="First name"              
-                [(ngModel)]="firstName" 
-                [ngModelOptions]="{standalone: true}" 
-                (keyup.enter)="onAddingNewTeamMember()">
-          </mat-form-field> 
-          <mat-form-field class="example-form-field">
+<div class="edit-team__header">
+  <button
+    class="edit-team__back-btn"
+    type="button"
+    (click)="onGoToDevListPage()"
+  >
+    <i class="edit-team__back-btn-icon"></i>
+  </button>
+</div>
 
-                  <input matInput type="text" placeholder="Last name"              
-                  [(ngModel)]="lastName" 
-                  [ngModelOptions]="{standalone: true}" 
-                  (keyup.enter)="onAddingNewTeamMember()">
-          </mat-form-field> <br>
+<div class="edit-team__main-area">
+  <div class="edit-team__form-area">
+    <h2 class="edit-team__form-title">Add a new team member</h2>
 
-          <label for="filePicker">Choose or drag an image file:</label><br>
-          <input type="file" id="filePicker" (change)="handleFileSelect($event)">
-        
-          <button mat-stroked-button aria-label="Add" (click)="onAddingNewTeamMember()">Add</button>
-          <button mat-stroked-button aria-label="Clear" (click)="onClearNewTeamMember()">Clear</button>
-        </form>
-      </mat-card>
-    </div>  
-    <mat-card class="card1" >
-    <button mat-stroked-button color="basic"  (click)="onGoToDevListPage()">Return</button> 
-    <!-- lists existing members of the team -->
+    <form class="edit-team__add-dev-form">
+      <div class="edit-team__add-dev-form__fields">
+        <div class="edit-team__add-dev-form__text-fields">
+          <div class="edit-team__add-dev-form__input-field">
+            <label for="fName" class="edit-team__add-dev-form__input-label">
+              First name :
+            </label>
+            <input
+              id="fName"
+              type="text"
+              class="edit-team__add-dev-form__input"
+              placeholder="First name"
+              [(ngModel)]="firstName"
+              [ngModelOptions]="{ standalone: true }"
+              (keyup.enter)="onAddingNewTeamMember()"
+            />
+          </div>
 
-      <h4>Your team members </h4>
-      <table class="teamMembers" *ngFor='let member of teamMembers'>
-        <tr>
-          <td>
-            <button  mat-mini-fab color="basic" aria-label="Example icon button with a delete icon" (click)="removeItem(member)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </td>
-          <td>
-            {{ member.firstName }} {{ member.lastName }}
-          </td>
-          <td>
-            <img mat-card-avatar [src]="this.sanitizer.bypassSecurityTrustUrl(member.picture)" *ngIf="member.picture">
-          </td>
-        </tr> 
-      </table>
-    </mat-card>
-</mat-card>
+          <div class="edit-team__add-dev-form__input-field">
+            <label for="lName" class="edit-team__add-dev-form__input-label">
+              Last name :
+            </label>
+
+            <input
+              id="lName"
+              type="text"
+              class="edit-team__add-dev-form__input"
+              placeholder="Last name"
+              [(ngModel)]="lastName"
+              [ngModelOptions]="{ standalone: true }"
+              (keyup.enter)="onAddingNewTeamMember()"
+            />
+          </div>
+        </div>
+        <div class="edit-team__add-dev-form__input-field">
+          <div class="edit-team__add-dev-form__input-wrap">
+            <label
+              for="filePicker"
+              class="edit-team__add-dev-form__file-input-btn"
+            >
+            <img [src]="this.sanitizer.bypassSecurityTrustUrl(picture)" alt="dev picture">
+            </label>
+            <input
+              id="filePicker"
+              class="edit-team__add-dev-form__file-input"
+              type="file"
+              (change)="handleFileSelect($event)"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="edit-team__add-dev-form__controls">
+        <button class="edit-team__add-dev-form__add-btn"
+                (click)="onAddingNewTeamMember()">
+            <i class="edit-team__add-btn-icon"></i>
+        </button>
+        <button class="edit-team__add-dev-form__clear-btn"
+                (click)="onClearNewTeamMember()">
+            <i class="edit-team__clear-btn-icon"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="edit-team__list-area">
+  <!-- lists existing members of the team -->
+
+  <h2>Your team</h2>
+  <table class="teamMembers" *ngFor="let member of teamMembers">
+    <tr>
+      <td>
+        <button
+          mat-mini-fab
+          color="basic"
+          aria-label="Example icon button with a delete icon"
+          (click)="removeItem(member)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>{{ member.firstName }} {{ member.lastName }}</td>
+      <td>
+        <img
+          mat-card-avatar
+          [src]="this.sanitizer.bypassSecurityTrustUrl(member.picture)"
+          *ngIf="member.picture"
+        />
+      </td>
+    </tr>
+  </table>
+</div>

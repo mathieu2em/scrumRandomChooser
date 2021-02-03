@@ -1,24 +1,180 @@
-#del_btn {
-    position: relative;
-    width: 10px;
-    height: 10px;
-    background-color: red;
+@import "../shared/styles/colors";
+@import "../shared/styles/icon-btn-round.mixin";
+@import "../shared/styles/btn-scale.mixin";
+
+.edit-team {
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__back-btn {
+      @include icon-btn-round(
+        2.5rem,
+        url(../../../assets/images/back-arrow-icon.svg)
+      );
+      @include btn-scale;
+    }
+
+    &__main-area {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__form-area,
+    &__list-area {
+        flex: 1 1 auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__form-title {
+        color: $purple-primary;
+        text-align: center;
+    }
+
+    &__add-dev-form {
+        display: flex;
+        flex-direction: column;
+
+        padding: .4rem;
+
+        border-radius: 0.2rem;
+        background-color: $purple-filter;
+    }
 }
 
-#name {
-    display: inline;
-    text-align: left;
-}
+.edit-team__add-dev-form {
 
-.teamMembers {
-    width: 200px;
-}
+    &__fields {
+        display: flex;
+    }
 
-#container {
-    width: 400px;
-}
+    &__text-fields {
+        flex: 1 1 auto;
+    }
 
-.card1 {
-    background-color: lightgray;
-}
+    &__input {
+        flex: 1 1 auto;
 
+        padding: 0.2rem;
+
+        border: none;
+        border-radius: 0.2rem;
+        background-color: $gray-secondary;
+
+        color: $purple-primary;
+        outline: none;
+
+        &-field {
+            flex: 0 0 8rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 1rem;
+        }
+
+        &-label {
+            width: 5.5rem;
+            color: $gray-secondary;
+        }
+
+        &-wrap {
+            position: relative;
+        }
+    }
+
+    &__file-input {
+        position: absolute;
+        z-index: -1;
+        top: 10px;
+        left: 8px;
+        font-size: 17px;
+        color: #b8b8b8;
+    }
+
+    &__file-input-btn {
+        @include btn-scale;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 3.7rem;
+        height: 3.7rem;
+
+        border-radius: 2rem;
+        background-color: $gray-secondary;
+
+        overflow: hidden;
+        cursor: pointer;
+
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__controls {
+        flex: 0 0 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__add-btn {
+        @include btn-scale;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2rem;
+        height: 2rem;
+
+        border: none;
+        border-radius: 0.2rem;
+
+        background-color: $blue-primary;
+        
+        outline: none;
+
+        & i {
+            display: block;
+            width: 85%;
+            height: 85%;
+            background: url(../../assets/images/plus-icon.svg);
+            background-repeat: no-repeat;
+        }
+    }
+
+    &__clear-btn {
+        @include btn-scale;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2rem;
+        height: 2rem;
+
+        border: none;
+        border-radius: 0.2rem;
+
+        background-color: $purple-primary;
+
+        outline: none;
+
+        & i {
+            display: block;
+            width: 85%;
+            height: 85%;
+            background: url(../../assets/images/cancel-icon.svg);
+            background-repeat: no-repeat;
+        }
+    }
+}
