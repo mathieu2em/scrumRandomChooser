@@ -75,32 +75,32 @@
       </div>
     </form>
   </div>
-</div>
 
-<div class="edit-team__list-area">
+
   <!-- lists existing members of the team -->
+  <div class="edit-team__list-area">
 
-  <h2>Your team</h2>
-  <table class="teamMembers" *ngFor="let member of teamMembers">
-    <tr>
-      <td>
-        <button
-          mat-mini-fab
-          color="basic"
-          aria-label="Example icon button with a delete icon"
-          (click)="removeItem(member)"
-        >
-          <mat-icon>delete</mat-icon>
+    <h2 class="edit-team__team-title">Your team</h2>
+    <div class="edit-team__team-list">
+      <div *ngFor="let member of teamMembers"
+          class="edit-team__team-list__item">
+
+        <button class="edit-team__team-list__delete-btn"
+                (click)="removeItem(member)">
+              <i class="edit-team__team-list__delete-btn-icon"></i>
         </button>
-      </td>
-      <td>{{ member.firstName }} {{ member.lastName }}</td>
-      <td>
-        <img
-          mat-card-avatar
-          [src]="this.sanitizer.bypassSecurityTrustUrl(member.picture)"
-          *ngIf="member.picture"
-        />
-      </td>
-    </tr>
-  </table>
+
+        <span class="edit-team__team-list__name-label">
+          {{ member.firstName }} {{ member.lastName }}
+        </span>
+
+        <i class="edit-team__team-list__member-picture"
+            [ngStyle]="{'background-image': member.picture ? 
+                            'url(' + member.picture + ')' : 
+                            'url(../../assets/images/logo.svg)'}"
+            [ngClass]="{'edit-team__team-list__member-picture--bg-small' : !member.picture}">
+        </i>
+      </div>
+    </div>
+  </div>
 </div>

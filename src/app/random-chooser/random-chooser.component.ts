@@ -26,7 +26,6 @@ export class RandomChooserComponent implements OnInit {
   // True is a there's a team registered/selected
   public existsTeam: boolean = false;
 
-  public currentImage: SafeUrl = null;
   public showTimer: false;
   public teamMembers: TeamMember[];
   
@@ -49,7 +48,6 @@ export class RandomChooserComponent implements OnInit {
       console.log(this.teamMembers.length);
       let i = Math.floor(Math.random()*this.teamMembers.length);
       this.actualTeamMember = this.teamMembers[i];
-      this.currentImage = this.sanitizer.bypassSecurityTrustUrl(this.actualTeamMember.picture);
       this.teamMembers.splice(i,1);
       this.isDevSelected = true;
     } else {
@@ -61,5 +59,4 @@ export class RandomChooserComponent implements OnInit {
   public onGoToDevListPage(): void {
     this.router.navigate(['devList']);
   }
-
 }

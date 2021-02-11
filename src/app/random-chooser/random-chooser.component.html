@@ -24,12 +24,15 @@
     
     <div *ngIf="isDevSelected"
          class="random-chooser__current-dev-container">
+         
+        <span class="random-chooser__current-dev-container__dev-picture"
+            [ngStyle]="{'background-image' : actualTeamMember.picture ?
+                                             'url(' + actualTeamMember.picture + ')' :
+                                             'url(../assets/images/logo.svg)'
+            }"
+            [ngClass]="{'random-chooser__current-dev-container__dev-picture--bg-small' : !actualTeamMember.picture}">
+        </span>
 
-        <div class="random-chooser__current-dev-container__cropper">
-            <img class="random-chooser__current-dev-container__dev-picture"
-                [src]="currentImage" 
-                alt="Current developer picture"/>
-        </div>
     </div>
 
     <div *ngIf="!isDevSelected"

@@ -1,4 +1,10 @@
-@mixin icon-btn-round($size, $icon-url){
+@mixin icon-btn-round(
+    $size, 
+    $icon-url, 
+    $background-color : transparent,
+    $background-color-hv : $purple-filter
+    ){
+
     flex: 0 0 auto;
     position: relative;
     width: $size;
@@ -6,7 +12,7 @@
     padding: 0.4rem;
     border: none;
     border-radius: 50%;
-    background: transparent;
+    background-color: $background-color;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 
@@ -19,7 +25,7 @@
     }
 
     &:hover {
-        background-color: $purple-filter;
+        background-color: $background-color-hv;
     }
 
     &:focus {

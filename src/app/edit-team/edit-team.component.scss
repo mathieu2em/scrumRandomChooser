@@ -2,6 +2,11 @@
 @import "../shared/styles/icon-btn-round.mixin";
 @import "../shared/styles/btn-scale.mixin";
 
+:host {
+    height: 100%;
+    min-height: 0;
+}
+
 .edit-team {
 
     &__header {
@@ -24,7 +29,7 @@
 
     &__form-area,
     &__list-area {
-        flex: 1 1 auto;
+        flex: 0 0 auto;
 
         display: flex;
         flex-direction: column;
@@ -38,8 +43,11 @@
     &__add-dev-form {
         display: flex;
         flex-direction: column;
+        justify-content: center;
 
-        padding: .4rem;
+        height: 10rem;
+        padding: .4rem .4rem .4rem 2.5rem;
+        margin-bottom: 2rem;
 
         border-radius: 0.2rem;
         background-color: $purple-filter;
@@ -176,5 +184,147 @@
             background: url(../../assets/images/cancel-icon.svg);
             background-repeat: no-repeat;
         }
+    }
+}
+
+.edit-team {
+
+    &__team-title {
+        text-align: center;
+        color: $purple-primary;
+    }
+
+    &__team-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        height: 25rem;
+        min-height: 0;
+        padding: 0.5rem 1rem;
+
+        border-radius: 0.2rem;
+        background-color: $purple-filter;
+
+        overflow-y: scroll;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            width: 100%;
+            padding: 0 0 0 1.3rem;
+            margin-bottom: 0.5rem;
+
+            border-radius: 2.5rem;
+            background-color: $gray-secondary;
+        }
+
+        &__delete-btn {
+            
+            flex: 0 0 2rem;
+
+            @include btn-scale;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 2rem;
+            height: 2rem;
+            margin-right: 1rem;
+
+            border: none;
+            border-radius: 1rem;
+
+            background-color: $purple-primary;
+
+            outline: none;
+
+            & i {
+                display: block;
+                width: 65%;
+                height: 65%;
+                background: url(../../assets/images/cancel-icon.svg);
+                background-repeat: no-repeat;
+            }
+        }
+
+        &__name-label {
+            flex: 1 0 6rem;
+
+            padding: 0 1rem;
+
+            font-size: 1.4rem;
+            text-align: center;
+            color: $purple-primary;
+        }
+
+        &__member-picture {
+            
+            flex: 0 0 5rem;
+
+            width: 5rem;
+            height: 5rem;
+            border-radius: 2.5rem;
+            background-color: $blue-primary;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            &--bg-small {
+                background-size: 75%;
+            }
+        }
+    }
+
+}
+
+@media only screen and (min-width: 950px) {
+    .edit-team {
+        &__main-area {
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            height: 100%;
+        }
+
+        &__form-area,
+        &__list-area {
+            width: 45%;
+            height: 100%;
+        }
+
+        &__form-area {
+            justify-content: center;
+        }
+
+        &__team-list {
+            height: auto;
+            max-height: 90%;
+        }
+
+
+    }
+}
+
+
+
+// (  list scrollbar  )
+.edit-team__team-list {
+    
+    &::-webkit-scrollbar {
+        width: .6rem;
+    }
+      
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+      
+    &::-webkit-scrollbar-thumb {
+        background-color: $purple-primary;
+        border-radius: .4rem;
     }
 }

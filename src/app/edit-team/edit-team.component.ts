@@ -35,8 +35,12 @@ export class EditTeamComponent implements OnInit {
 
     // Validations
     if (this.firstName.trim() != "" || this.lastName.trim() != "" ){
+
+      // If no picture was uploaded, new dev picture is null
+      const devPicture: string = this.picture === this.picturePlaceholderURL ? null : this.picture;
+
       // Add the newly created member to persistent memory
-      let teamMember: TeamMember = { firstName: this.firstName, lastName: this.lastName, picture: this.picture };
+      let teamMember: TeamMember = { firstName: this.firstName, lastName: this.lastName, picture: devPicture };
       this._tmService.addMember(teamMember, true);
     }
 
