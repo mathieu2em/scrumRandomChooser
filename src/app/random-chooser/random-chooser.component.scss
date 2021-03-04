@@ -12,10 +12,15 @@
     height: 100%;
 
     &__header {
-        flex: 0 0 auto;
+        position: fixed;
+             top: 0;
+            left: 0;
+           right: 0;
 
         display: flex;
         justify-content: space-between;
+
+        padding: 1rem 1.5rem 0;
     }
 
     &__logo {
@@ -38,7 +43,7 @@
     }
 
     &__dev-name-display {
-        flex: 0 0 10rem;
+        flex: 0 0 auto;
 
         display: flex;
         justify-self: flex-start;
@@ -48,8 +53,11 @@
 }
 
 .random-chooser__current-dev-container {
-    flex: 1 1 auto;
-    
+
+    position: fixed;
+         top: 4.75rem;
+      bottom: 6rem;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -60,8 +68,8 @@
     &__dev-picture {
         display: block;
 
-        min-width: 20rem;
-        min-height: 20rem;
+        height: 100%;
+        min-height: 4rem;
 
         border-radius: 50%;
 
@@ -73,15 +81,13 @@
                     min-width 0.2s linear,
                     min-height 0.2s linear;
 
-        &--bg-small {
-            background-size: 95%;
+        &--square {
+            border-radius: 0;
         }
 
         &-placeholder {
             align-self: center;
-            width: 100%;
-            max-width: 20rem;
-            min-width: 15rem;
+            height: 100%;
         }
     }
 
@@ -92,18 +98,17 @@
     }
 }
 
-@media only screen and (max-width: 350px) {
-
-    .random-chooser__current-dev-container__dev-picture {
-        min-width: 15rem;
-        min-height: 15rem;
-    }
-}
-
 .random-chooser__controls {
+    position: fixed;
+      bottom: 0;
+        left: 0;
+       right: 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 0 1.5rem 1rem;
 }
 
 .random-chooser {

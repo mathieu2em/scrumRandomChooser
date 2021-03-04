@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TeamMembersManagerService } from '../team-members-manager.service';
 import { TeamMember } from '../TeamMember';
@@ -44,7 +44,7 @@ export class RandomChooserComponent implements OnInit {
   }
 
   public onChooseDev() {
-    if(this.teamMembers.length>0){
+    if (this.teamMembers.length > 0) {
       console.log(this.teamMembers.length);
       let i = Math.floor(Math.random()*this.teamMembers.length);
       this.actualTeamMember = this.teamMembers[i];

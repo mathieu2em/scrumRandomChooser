@@ -7,31 +7,35 @@
                 alt="Random Chooser Logo"/>
         </a>
 
+        <div *ngIf="isDevSelected" 
+             class="random-chooser__dev-name-display">
+            <span class="random-chooser__current-dev-container__dev-name">
+                {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
+            </span>
+        </div>
+
         <button class="random-chooser__settings-btn"
                 type="button">
                 <i class="random-chooser__settings-btn-icon"></i>
         </button>
     </div>
-
-    <div *ngIf="isDevSelected" 
-         class="random-chooser__dev-name-display">
-        <span class="random-chooser__current-dev-container__dev-name">
-            {{ actualTeamMember.firstName }} {{ actualTeamMember.lastName }}
-        </span>
-    </div>
-
-
     
     <div *ngIf="isDevSelected"
          class="random-chooser__current-dev-container">
          
-        <span class="random-chooser__current-dev-container__dev-picture"
+        <!-- Keeping this in case, until we make a picture cropper -->
+        <!-- <span class="random-chooser__current-dev-container__dev-picture"
             [ngStyle]="{'background-image' : actualTeamMember.picture ?
                                              'url(' + actualTeamMember.picture + ')' :
                                              'url(../assets/images/logo.svg)'
             }"
             [ngClass]="{'random-chooser__current-dev-container__dev-picture--bg-small' : !actualTeamMember.picture}">
-        </span>
+        </span> -->
+
+        <img class="random-chooser__current-dev-container__dev-picture"
+             [ngClass]="{'random-chooser__current-dev-container__dev-picture--square' : !actualTeamMember.picture}"
+             [src]=" actualTeamMember.picture ? this.sanitizer.bypassSecurityTrustUrl(actualTeamMember.picture) : '../assets/images/logo.svg' " 
+             alt="Current dev picture"/>
 
     </div>
 
