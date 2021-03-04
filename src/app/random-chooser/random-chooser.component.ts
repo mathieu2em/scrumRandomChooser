@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { TeamMembersManagerService } from '../team-members-manager.service';
 import { TeamMember } from '../TeamMember';
@@ -26,6 +26,7 @@ export class RandomChooserComponent implements OnInit {
   // True is a there's a team registered/selected
   public existsTeam: boolean = false;
 
+  public currentImage: SafeUrl = null;
   public showTimer: false;
   public teamMembers: TeamMember[];
   
@@ -48,6 +49,7 @@ export class RandomChooserComponent implements OnInit {
       console.log(this.teamMembers.length);
       let i = Math.floor(Math.random()*this.teamMembers.length);
       this.actualTeamMember = this.teamMembers[i];
+      this.currentImage = this.sanitizer.bypassSecurityTrustUrl(this.actualTeamMember.picture);
       this.teamMembers.splice(i,1);
       this.isDevSelected = true;
     } else {

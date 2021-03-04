@@ -34,7 +34,7 @@
 
         <img class="random-chooser__current-dev-container__dev-picture"
              [ngClass]="{'random-chooser__current-dev-container__dev-picture--square' : !actualTeamMember.picture}"
-             [src]=" actualTeamMember.picture ? this.sanitizer.bypassSecurityTrustUrl(actualTeamMember.picture) : '../assets/images/logo.svg' " 
+             [src]=" actualTeamMember.picture ? currentImage : '../assets/images/logo.svg' " 
              alt="Current dev picture"/>
 
     </div>
