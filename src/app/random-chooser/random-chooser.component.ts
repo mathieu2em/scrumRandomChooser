@@ -15,7 +15,7 @@ export class RandomChooserComponent implements OnInit {
   public actualTeamMember: TeamMember;
 
   // If no team registered, show this message
-  public noTeamMessage: string = "No team!\nManage your teams.";
+  public noTeamMessage: string = "No team!\nManage your team.";
 
   // If no actual team Member, show this message
   public startMessage: string = "Spin for a dev!";

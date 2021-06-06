@@ -1,6 +1,6 @@
 @import "../shared/styles/colors";
 @import "../shared/styles/icon-btn-round.mixin";
-@import "../shared/styles/btn-scale.mixin";
+@import "../shared/styles/custom-scroll.mixin";
 
 .dev-list {
 
@@ -14,7 +14,6 @@
         2.5rem,
         url(../../../assets/images/back-arrow-icon.svg)
       );
-      @include btn-scale;
     }
     
     &__manage-team-btn {
@@ -22,7 +21,6 @@
         2.5rem,
         url(../../../assets/images/tool-icon.svg)
         );
-        @include btn-scale;
     }
       
     &__intro-msg {
@@ -93,24 +91,7 @@
 
       overflow-y: auto;
 
-      // width
-      &::-webkit-scrollbar {
-          width: 8px;
-      }
-      // track
-      &::-webkit-scrollbar-track {
-          border-radius: 0;
-          box-shadow: none;
-      }
-      // handle
-      &::-webkit-scrollbar-thumb {
-          border-radius: 4px;
-          background: $gray-neutral;
-      }
-
-      //  ( FireFox compatibility )
-      scrollbar-color: $gray-neutral;
-      scrollbar-width: thin;
+      @include custom-scroll();
     }
 
     &__present-list__item,
@@ -149,7 +130,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .dev-list {
 
     &__lists-area {

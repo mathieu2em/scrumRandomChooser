@@ -1,9 +1,8 @@
 @import "../shared/styles/colors";
 @import "../shared/styles/icon-btn-round.mixin";
-@import "../shared/styles/btn-scale.mixin";
 
 :host {
-    height: 100%;
+    height: 95vh;
     min-height: 0;
 }
 
@@ -19,7 +18,6 @@
         2.5rem,
         url(../../../assets/images/back-arrow-icon.svg)
       );
-      @include btn-scale;
     }
 
     &__main-area {
@@ -106,7 +104,6 @@
     }
 
     &__file-input-btn {
-        @include btn-scale;
 
         display: flex;
         align-items: center;
@@ -135,7 +132,6 @@
     }
 
     &__add-btn {
-        @include btn-scale;
 
         display: flex;
         align-items: center;
@@ -151,6 +147,8 @@
         
         outline: none;
 
+        cursor: pointer;
+
         & i {
             display: block;
             width: 85%;
@@ -161,7 +159,6 @@
     }
 
     &__clear-btn {
-        @include btn-scale;
 
         display: flex;
         align-items: center;
@@ -176,6 +173,8 @@
         background-color: $purple-primary;
 
         outline: none;
+
+        cursor: pointer;
 
         & i {
             display: block;
@@ -214,7 +213,7 @@
             justify-content: space-between;
 
             width: 100%;
-            padding: 0 0 0 1.3rem;
+            padding: 0.3rem;
             margin-bottom: 0.5rem;
 
             border-radius: 2.5rem;
@@ -224,8 +223,6 @@
         &__delete-btn {
             
             flex: 0 0 2rem;
-
-            @include btn-scale;
 
             display: flex;
             align-items: center;
@@ -242,6 +239,8 @@
 
             outline: none;
 
+            cursor: pointer;
+
             & i {
                 display: block;
                 width: 65%;
@@ -256,18 +255,19 @@
 
             padding: 0 1rem;
 
-            font-size: 1.4rem;
+            font-size: 1rem;
+            font-weight: 600;
             text-align: center;
             color: $purple-primary;
         }
 
         &__member-picture {
             
-            flex: 0 0 5rem;
+            flex: 0 0 2rem;
 
-            width: 5rem;
-            height: 5rem;
-            border-radius: 2.5rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
             background-color: $blue-primary;
             background-position: center;
             background-repeat: no-repeat;
@@ -286,15 +286,17 @@
         &__main-area {
             flex-direction: row;
             justify-content: space-around;
-            align-items: center;
 
             height: 100%;
+            min-height: 0;
         }
 
         &__form-area,
         &__list-area {
             width: 45%;
             height: 100%;
+            min-height: 0;
+            max-height: 80vh;
         }
 
         &__form-area {

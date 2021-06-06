@@ -1,4 +1,5 @@
 @import "./app/shared/styles/colors";
+@import "./app/shared/styles/custom-scroll.mixin";
 
 * {
     box-sizing: border-box;
@@ -9,11 +10,13 @@
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    padding: 1rem;
     overflow: hidden;
     background-color: $blue-primary;
+}
+
+body {
+    padding: 1rem;
+    @include custom-scroll();
 }
 
 .app-root__loading-image {
@@ -22,7 +25,7 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 40%;
+    width: 30%;
 
     // Translates the image to half its size, up and left, so
     // the center is bang in the middle of the parent container

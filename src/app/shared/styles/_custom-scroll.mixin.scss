@@ -1,0 +1,22 @@
+@mixin custom-scroll {
+    overflow-y: auto;
+
+      // width
+      &::-webkit-scrollbar {
+          width: 8px;
+      }
+      // track
+      &::-webkit-scrollbar-track {
+          border-radius: 0;
+          box-shadow: none;
+      }
+      // handle
+      &::-webkit-scrollbar-thumb {
+          border-radius: 4px;
+          background: $gray-neutral;
+      }
+
+      //  ( FireFox compatibility )
+      scrollbar-color: $gray-neutral;
+      scrollbar-width: thin;
+}
